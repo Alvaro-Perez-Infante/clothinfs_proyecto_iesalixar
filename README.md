@@ -12,19 +12,23 @@ El desarrollo de toda Aplicación Web requiere seguir un [proceso estructurado](
 
 ---
 
-# Título del Proyecto
+# ColthInfs
 
-#### Curso Escolar 20XX-20XX
-#### Autor: [Nombre del alumno autor](Enlace a su cuenta de gitHub)
-#### Tutor: [Nombre del profesor tutor](Enlace a su cuenta de gitHub)
-#### Fecha de Inicio: DD-MM-YYYY
-#### Fecha de Finalización: DD-MM-YYYY
+#### Curso Escolar 2023-2024
+#### Autor: [Álvaro Pérez Infante](https://github.com/Alvaro-Perez-Infante)
+#### Tutor: [Antonio Gabriel González Casado](https://github.com/antonio-gabriel-gonzalez-casado)
+#### Fecha de Inicio: 15-03-2024
+#### Fecha de Finalización: XX-06-2024
 
 ## Breve descripción del proyecto
 
-Si ya tienes una idea para tu aplicación, explícala brevemente. Si no es así, lo que realmente necesitas es **buscar un problema o necesidad a la que darle solución**, y estos **están por todas partes**. Así que trata de buscar problemas o necesidades en tu vida diaria y realiza una lista. Una vez que tengas una lista exhaustiva, ya puedes empezar a pensar en **cómo puedes resolverlos**.
+ClothInfs es una tienda en línea donde puedes comprar ropa de moda urbana, como camisetas, sudaderas y accesorios. Pero no es solo una tienda, también es un lugar donde puedes compartir tus estilos favoritos, 
+descubrir nuevas marcas y conectarte con otros a los que les gusta la moda urbana.
 
-En este apartado el alumno debe hacer una breve descripción del proyecto que vaya a realizar. Esta descripción no será ua descripción detallada, será una presentación general con no más de 10 líneas.
+Es como una red social para amantes de la moda streetwear. Puedes crear tu perfil, decir qué te gusta y seguir a otras personas para ver qué están usando. También puedes dejar comentarios sobre la ropa y ver 
+las últimas tendencias y marcas.
+
+En ClothInfs, quiero que todos se sientan bienvenidos y puedan expresarse a través de su ropa. Es un lugar divertido y fácil de usar donde puedes encontrar ropa genial y hacer nuevos amigos que comparten tus intereses. 
 
 ## Definir el objetivo de la aplicación
 **Tener una gran idea** o encontrar un punto del mercado al que no se esté dando un producto o servicio es el punto de partida en cada nuevo proyecto. Antes de comenzar debes **definir claramente el propósito y la misión de la aplicación web**:
