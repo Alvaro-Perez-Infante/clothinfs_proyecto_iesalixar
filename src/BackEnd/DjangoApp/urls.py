@@ -16,9 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from Auth.views import UserCreateView, UserLoginView
 from PrendaApp.views import PrendaCreateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('prendas/', PrendaCreateView.as_view(), name='prenda-create-list'),
+    path('api/users/register/', UserCreateView.as_view(), name='user-create'),
+    path('api/users/login/', UserLoginView.as_view(), name='user-login'),
 ]

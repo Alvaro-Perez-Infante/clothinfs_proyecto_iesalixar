@@ -7,9 +7,10 @@ pip install django-import-export
 pip install coreapi
 pip install coreapi-cli
 pip install setuptools 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 npm install react-router-dom
-npm install axios
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+pm install axios
 
 pip install psycopg2 psycopg2-binary
 pip install Pillow
