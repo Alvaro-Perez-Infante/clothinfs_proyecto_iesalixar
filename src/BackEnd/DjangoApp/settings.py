@@ -40,13 +40,14 @@ BASE_APPS = [
 ]
 
 LOCAL_APPS = [
-    'prenda',
+    'PrendaApp',
 ]
 
 
 THIRDS_APPS = [
     'rest_framework',
     'corsheaders', # Comunica puertos BackEnd + FrontEnd
+    'import_export',
 ]
 
 INSTALLED_APPS = LOCAL_APPS+BASE_APPS+THIRDS_APPS

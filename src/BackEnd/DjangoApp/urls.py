@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from prenda.views import PrendaCreateView
+from PrendaApp.views import PrendaCreateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),

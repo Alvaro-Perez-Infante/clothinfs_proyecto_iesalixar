@@ -2,7 +2,6 @@ from django.db import models
 
 class Prenda(models.Model):
     id = models.AutoField(primary_key=True)
-    nombre = models.CharField(max_length=100)
     marca_choices = [
         ('Bleu Ciel', 'Bleu Ciel'),
         ('Down Under', 'Down Under'),
@@ -48,7 +47,7 @@ class Prenda(models.Model):
     ]
     material = models.CharField(max_length=50, choices=material_choices)
     precio_original = models.DecimalField(max_digits=10, decimal_places=2)
-    precio_rebajado = models.DecimalField(max_digits=10, decimal_places=2,null=True)
+    precio_rebajado = models.DecimalField(max_digits=10, decimal_places=2,blank=True,default=0.0)
     fecha_novedad = models.DateTimeField(auto_now_add=True, auto_now=False)
     tipo_prenda_choices = [
         ('Abrigos y Chaquetas', 'Abrigos y Chaquetas'),
@@ -79,7 +78,7 @@ class Prenda(models.Model):
         ('Vestidos', 'Vestidos'),
         ('Zapatillas', 'Zapatillas'),
     ]
-    tipo_prenda = models.CharField(max_length=50, choices=tipo_prenda_choices)
+    tipo_prenda = models.CharField(max_length=50, choices=tipo_prenda_choices, default='Camisetas')
     color_choices = [
         ('Amarillo', 'Amarillo'),
         ('Azul', 'Azul'),
@@ -109,17 +108,17 @@ class Prenda(models.Model):
         ('Verde', 'Verde'),
         ('Verde Oscuro', 'Verde Oscuro'),
     ]
-    color = models.CharField(max_length=20, choices=color_choices)
+    color = models.CharField(max_length=20, choices=color_choices, default='Blanco')
     genero_choices = [
         ('Hombre', 'Hombre'),
         ('Mujer', 'Mujer'),
         ('Niño', 'Niño'),
         ('Niña', 'Niña'),
     ]
-    genero = models.CharField(max_length=6, choices=genero_choices)
+    genero = models.CharField(max_length=6, choices=genero_choices,default='Hombre')
 
     def __str__(self):
-        return self
+        return str(self.id)
     class Meta:
         verbose_name='Prenda'
         verbose_name_plural='Prendas'
