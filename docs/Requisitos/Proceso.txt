@@ -15,7 +15,7 @@ python manage.py migrate   	  (Actualiza Bases de Datos)
 
 
 python manage.py createsuperuser (crea user admin)
-- Alvaro / prueba123. /alvaroperezin@gmail.com
+- alvaro / prueba123. /alvaroperezin@gmail.com
 #######################################################################
 
 

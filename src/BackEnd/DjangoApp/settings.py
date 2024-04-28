@@ -40,8 +40,9 @@ BASE_APPS = [
 ]
 
 LOCAL_APPS = [
-    
+    'prenda',
 ]
+
 
 THIRDS_APPS = [
     'rest_framework',
