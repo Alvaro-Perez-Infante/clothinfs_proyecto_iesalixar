@@ -1,0 +1,10 @@
+Instalaciones necesarias
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+pip install Django
+pip install djangorestframework
+pip install django-cors-headers
+pip install psycopg2 psycopg2-binary
+pip install Pillow
+npm install react-router-dom
+npm install axios
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
