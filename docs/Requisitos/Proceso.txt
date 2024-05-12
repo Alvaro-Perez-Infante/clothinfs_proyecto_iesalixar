@@ -16,6 +16,8 @@ python manage.py migrate   	  (Actualiza Bases de Datos)
 
 python manage.py createsuperuser (crea user admin)
 - alvaro / prueba123. /alvaroperezin@gmail.com
+
+pip freeze > requirements.txt  (Actualizar requirements)
 #######################################################################
 
 
