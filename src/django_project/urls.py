@@ -17,10 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from prendaApp.views import RopaCreateAPIView
+from rest_framework.documentation import include_docs_urls
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('ropa/', RopaCreateAPIView.as_view(), name='ropa-list-create'),
-
+    path('docs/', include_docs_urls(title="Prenda App API")),
 ]

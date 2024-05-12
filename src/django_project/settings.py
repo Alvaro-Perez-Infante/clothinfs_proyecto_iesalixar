@@ -24,7 +24,10 @@ SECRET_KEY = os.environ.get('SECRET_KEY',default='your secret key')
 # SECURITY WARNING: keep the secret key used in production secret!
 DEBUG = 'RENDER' not in os.environ
 
-ALLOWED_HOSTS = ['clothinfs-proyecto-iesalixar.onrender.com']
+ALLOWED_HOSTS = [
+                'clothinfs-proyecto-iesalixar.onrender.com',
+                'localhost',
+                ]
 RENDER_EXTERNAL_HOSTNAME=os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME: ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
@@ -40,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    'coreapi',
     'prendaApp',
     'rest_framework',
 ]
@@ -132,3 +137,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 if not DEBUG:
     STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
     STATICFILES_STORAGE= 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    
+
+REST_FRAMEWORK = {'DEFAULT_SCHEMA_CLASS':'rest_framework.schemas.coreapi.AutoSchema',}
