@@ -74,7 +74,7 @@ pip freeze > requirements.txt  (Actualizar requirements)
 
  3.1- Crea los modelos de las tablas de la base de datos que persistan
 	 3.1.1 Rellena models.py del nuevo proyecto 
- 		ejemplo: class Personaje(models.Model):
+ 		ejemplo: class Catalogo(models.Model):
 				nombre=models.CharField(max_lenght=100)
 
  3.2- Manda el codigo para que cree el script,ejecutando:
@@ -134,30 +134,30 @@ pip freeze > requirements.txt  (Actualizar requirements)
 		from rest_framework import generics
 		from DnDApp import serializers
 
-		from DnDApp.models import Personajes
+		from DnDApp.models import Catalogos
 
 
-		class PersonajesAPIView(generics.ListCreateAPIView): #Vista de todos los personajes
+		class CatalogosAPIView(generics.ListCreateAPIView): #Vista de todos los Catalogos
     
-   			queryset=Personajes.objects.all()
-    			serializer_class= serializers.PersonajesSerializer#traduce un objeto a json
+   			queryset=Catalogos.objects.all()
+    			serializer_class= serializers.CatalogosSerializer#traduce un objeto a json
 
 
-		class PersonajeAPIView(generics.RetrieveUpdateDestroyAPIView): #Vista actualizar/eliminar
+		class CatalogosAPIView(generics.RetrieveUpdateDestroyAPIView): #Vista actualizar/eliminar
 
-	    		queryset=Personajes.objects.all()
-    			serializer_class= serializers.PersonajesSerializer#traduce un objeto a json
+	    		queryset=Catalogos.objects.all()
+    			serializer_class= serializers.CatalogosSerializer#traduce un objeto a json
 	
 	5.2- Creamos el serializador.py para nuestra clase
 		from rest_framework import serializers
 
-		from DnDApp.models import Personajes
+		from DnDApp.models import Catalogos
 
 
-		class PersonajesSerializer(serializers.ModelSerializer):
+		class CatalogosSerializer(serializers.ModelSerializer):
 
     			class Meta:
-           			model=Personajes
+           			model=Catalogo
          			fields='__all__' #todos los campos
 
 
@@ -167,8 +167,8 @@ pip freeze > requirements.txt  (Actualizar requirements)
 		from DnDApp import views
 
 		urlpatterns=[
-    			path('personajes/',views.PersonajesAPIView.as_view()),
-    			path('personaje/<int:pk>/',views.PersonajeAPIView.as_view()), (siendo pk un nombre aleatorio que representa primary key)
+    			path('catalogos/',views.CatalogosAPIView.as_view()),
+    			path('catalogo/<int:pk>/',views.CatalogoAPIView.as_view()), (siendo pk un nombre aleatorio que representa primary key)
 
 		]
 		
