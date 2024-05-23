@@ -1,0 +1,38 @@
+/* news.css */
+.news-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 50%;
+  }
+  
+  .news-card {
+    width: calc(30% - 10px);
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .news-image {
+    width: 100%;
+    height: auto;
+  }
+  
+  .news-content {
+    padding: 10px;
+  }
+  
+  .news-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .news-type,
+  .news-genre {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  

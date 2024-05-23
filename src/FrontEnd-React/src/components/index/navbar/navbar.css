@@ -1,0 +1,87 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+  }
+  
+  .navbar-sections {
+    display: flex;
+  }
+  
+  .navbar-section {
+    margin-right: 20px;
+    position: relative; /* Para posicionar correctamente el menú desplegable */
+    cursor: pointer; /* Cambia el cursor a una mano cuando pasa sobre la imagen */
+
+  }
+  
+  .navbar-section a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  /* Estilos para el menú desplegable */
+  .ropa-menu {
+    position: absolute;
+    top: calc(100% + 2px); /* Posiciona el menú debajo del elemento padre */
+    left: 0;
+    background-color: white;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-top: none;
+    display: none; /* Oculta el menú por defecto */
+  }
+  
+  /* Muestra los elementos del menú uno debajo del otro */
+  .ropa-menu a {
+    display: block;
+    color: black;
+    text-decoration: none;
+    padding: 5px 0;
+  }
+  
+  /* Muestra el menú cuando se pasa el ratón por encima */
+  .navbar-section:hover .ropa-menu {    
+    display: block;
+  }
+  .navbar-logo{
+  
+  }
+  .navbar-logo img {
+    width: 100px; /* Ajusta el tamaño según tus necesidades */
+    cursor: pointer; /* Cambia el cursor a una mano cuando pasa sobre la imagen */
+  }
+  
+  
+  .navbar-profile a {
+    margin-left: 10px;
+    text-decoration: none; /* Quita el subrayado */
+    color: white; /* Cambia el color de los enlaces a blanco */
+  }
+  
+  /* Estilos para el menú desplegable de MARCAS */
+.marcas-menu {
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    background-color: white;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-top: none;
+    display: none;
+  }
+  
+  .marcas-menu a {
+    display: block;
+    color: black;
+    text-decoration: none;
+    padding: 5px 0;
+  }
+  
+  .navbar-section:hover .marcas-menu {
+    display: block;
+  }
+  

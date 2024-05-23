@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import './cardList.css';
-import Filter from './filter/filter';
+import './cloth_type_filter.css';
 
-export default class CardList extends Component {
+export default class ClothTypeFilter extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,31 +13,35 @@ export default class CardList extends Component {
     };
   }
 
-  handleCardClick = (id) => {
-    window.location.href = `/clothes-details/${id}`;
-  }
-
   componentDidMount() {
     this.setState({ isLoading: true });
-    fetch('http://localhost:8000/api/clothes/')
+
+    // Extraer el tipo de prenda de la URL
+    const tipoPrenda = this.extractTipoPrenda(window.location.href);
+
+    // Realizar la solicitud fetch usando el tipo de prenda extraído
+    fetch(`http://localhost:8000/api/clothes/${tipoPrenda}/`)
       .then(response => {
         if (response.ok) {
           return response.json();
         } else {
-          throw new Error('Failed to fetch prendas');
+          throw new Error('Failed to fetch clothes');
         }
       })
       .then(data => {
-        console.log('Fetched data:', data); // Log the data to inspect its structure
-        if (Array.isArray(data)) {
-          this.setState({ prendas: data, isLoading: false });
-        } else {
-          throw new Error('Data fetched is not an array');
-        }
+        this.setState({ prendas: data, isLoading: false });
       })
       .catch(error => this.setState({ error, isLoading: false }));
   }
 
+  extractTipoPrenda(url) {
+    const startIndex = url.indexOf('/clothes/') + '/clothes/'.length;
+    const endIndex = url.indexOf('/', startIndex) !== -1 ? url.indexOf('/', startIndex) : url.length;
+    return url.substring(startIndex, endIndex);
+  }
+  handleCardClick = (id) => {
+    window.location.href = `/clothes-details/${id}`;
+  }
   render() {
     const { prendas, isLoading, error, currentPage, itemsPerPage } = this.state;
 
@@ -67,11 +70,8 @@ export default class CardList extends Component {
     }
 
     return (
-      <div className='MainCardList'>
+      <div className="MainCardList">
         <div className="card-list">
-          <div>
-            <Filter/>
-          </div>
           {currentItems.map(prenda => (
             <div className="card" key={prenda.id} onClick={() => this.handleCardClick(prenda.id)}>
               <img src={prenda.imagen_url} alt={prenda.nombre} className="card-image" />
@@ -81,6 +81,7 @@ export default class CardList extends Component {
                   <div><strong>Marca:</strong> {prenda.marca.nombre}</div>
                   <div><strong>Género:</strong> {prenda.genero}</div>
                   <div><strong>Precio:</strong> {prenda.precio_original}€</div>
+                  {/* Otros detalles de la prenda */}
                 </div>
               </div>
             </div>

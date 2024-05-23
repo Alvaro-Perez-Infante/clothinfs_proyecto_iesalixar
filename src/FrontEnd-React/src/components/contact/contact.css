@@ -1,0 +1,45 @@
+.contact-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-info,
+.form-container,
+.nerety-info {
+  margin-bottom: 20px;
+}
+
+.form-container {
+  width: 100%;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: calc(100% - 22px);
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
