@@ -1,5 +1,6 @@
 from datetime import timezone
 from django.db import models
+from django_ckeditor_5.fields import CKEditor5Field
 
 
 error_img_url="https://www.shutterstock.com/image-vector/error-500-page-empty-symbol-260nw-1711106146.jpg"
@@ -107,6 +108,7 @@ class Noticia(models.Model):
     autor = models.CharField(max_length=50)
     fecha=models.DateField('Fecha de Creacion',auto_now=False,auto_now_add=True)
     imagen_url = models.URLField(default=error_img_url)
+    contenido= CKEditor5Field(null=True, blank=True,config_name='extends')
 
     def __str__(self):
         return self.titulo
