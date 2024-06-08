@@ -66,7 +66,6 @@ INSTALLED_APPS = LOCAL_APPS+BASE_APPS+THIRDS_APPS
 MIDDLEWARE = [
     # Cors
     'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.common.CommonMiddleware',
     # Fin-Cors
     'django.middleware.security.SecurityMiddleware',
     # Whitenoise
@@ -156,6 +155,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',
+    'https://clothinfs-proyecto-iesalixar.onrender.com/',
     ]
 
 if not DEBUG:
