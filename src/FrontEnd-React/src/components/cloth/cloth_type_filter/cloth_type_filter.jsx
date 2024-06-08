@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './cloth_type_filter.css';
+import { BASE_API_URL } from "../../../constants";
 
 export default class ClothTypeFilter extends Component {
   constructor(props) {
@@ -20,7 +21,7 @@ export default class ClothTypeFilter extends Component {
     const tipoPrenda = this.extractTipoPrenda(window.location.href);
 
     // Realizar la solicitud fetch usando el tipo de prenda extraído
-    fetch(`http://localhost:8000/api/clothes/${tipoPrenda}/`)
+    fetch(`${BASE_API_URL}/api/clothes/${tipoPrenda}/`)
       .then(response => {
         if (response.ok) {
           return response.json();

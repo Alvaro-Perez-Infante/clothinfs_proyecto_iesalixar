@@ -1,6 +1,7 @@
 import React from "react";
 import "./LoginPage.css";
 import { Navigate } from 'react-router-dom'
+import { BASE_API_URL } from "../../../constants";
 
 export class LoginPage extends React.Component {
   constructor(props) {
@@ -28,7 +29,7 @@ export class LoginPage extends React.Component {
 
     // Realizar la solicitud POST para iniciar sesión
     try {
-      const response = await fetch("http://localhost:8000/api/users/login/", {
+      const response = await fetch(`${BASE_API_URL}/api/users/login/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

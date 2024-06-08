@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './blog.css';
+import { BASE_API_URL } from "../../constants";
 
 export default class Blog extends Component {
   constructor(props) {
@@ -13,7 +14,7 @@ export default class Blog extends Component {
 
   componentDidMount() {
     this.setState({ isLoading: true });
-    fetch('http://localhost:8000/api/news/')
+    fetch(`${BASE_API_URL}/api/news/`)
       .then(response => {
         if (response.ok) {
           return response.json();

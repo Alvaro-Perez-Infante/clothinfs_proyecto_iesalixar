@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './brandClothes.css'
+import { BASE_API_URL } from "../../../constants";
 
 
 export default class BrandClothes extends Component {
@@ -21,7 +22,7 @@ export default class BrandClothes extends Component {
     const Marca = this.extractMarca(window.location.href);
 
     // Realizar la solicitud fetch usando el tipo de prenda extraído
-    fetch(`http://localhost:8000/api/brands/${Marca}/`)
+    fetch(`${BASE_API_URL}/api/brands/${Marca}/`)
       .then(response => {
         if (response.ok) {
           return response.json();

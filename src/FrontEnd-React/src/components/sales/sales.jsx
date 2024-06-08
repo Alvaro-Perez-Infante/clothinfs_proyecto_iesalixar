@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './sales.css'
+import { BASE_API_URL } from "../../constants";
+
 
 export default class Sales extends Component {
   constructor(props) {
@@ -15,7 +17,7 @@ export default class Sales extends Component {
 
   componentDidMount() {
     this.setState({ isLoading: true });
-    fetch('http://localhost:8000/api/clothes/sales/')
+    fetch(`${BASE_API_URL}/api/clothes/sales/`)
       .then(response => {
         if (response.ok) {
           return response.json();

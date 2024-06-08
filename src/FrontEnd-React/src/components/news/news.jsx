@@ -1,6 +1,7 @@
 // News.js
 import React, { Component } from 'react';
 import './news.css';
+import { BASE_API_URL } from "../../constants";
 
 export default class News extends Component {
   constructor(props) {
@@ -16,7 +17,7 @@ export default class News extends Component {
 
   componentDidMount() {
     this.setState({ isLoading: true });
-    fetch('http://localhost:8000/api/clothes/news/')
+    fetch(`${BASE_API_URL}/api/clothes/news/`)
       .then(response => {
         if (response.ok) {
           return response.json();

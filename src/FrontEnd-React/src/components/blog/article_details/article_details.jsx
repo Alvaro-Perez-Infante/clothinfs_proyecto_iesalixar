@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './article_details.css';
+import { BASE_API_URL } from "../../../constants";
 
 export default class Article_details extends Component {
   constructor(props) {
@@ -14,7 +15,7 @@ export default class Article_details extends Component {
   componentDidMount() {
     const id = this.extractId(window.location.href);
 
-    fetch(`http://localhost:8000/api/news/${id}/`)
+    fetch(`${BASE_API_URL}/api/news/${id}/`)
       .then(response => {
         if (response.ok) {
           return response.json();

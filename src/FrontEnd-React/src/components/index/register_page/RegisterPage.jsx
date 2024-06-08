@@ -1,5 +1,6 @@
 import React from "react";
 import "./RegisterPage.css";
+import { BASE_API_URL } from "../../../constants";
 
 export class RegisterPage extends React.Component {
   handleSubmit = async (event) => {
@@ -17,7 +18,7 @@ export class RegisterPage extends React.Component {
     // Realizar la solicitud POST para crear un nuevo usuario
     try {
       const response = await fetch(
-        "http://localhost:8000/api/users/register/",
+        `${BASE_API_URL}/api/users/register/`,
         {
           method: "POST",
           headers: {

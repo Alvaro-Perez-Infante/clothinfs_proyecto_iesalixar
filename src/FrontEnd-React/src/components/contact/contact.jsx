@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './contact.css';
-
+import { BASE_API_URL } from "../../constants";
 
 export default class Contact extends Component {
   constructor(props) {
@@ -23,7 +23,7 @@ export default class Contact extends Component {
     const { asunto, mensaje } = this.state;
 
     try {
-      const response = await fetch('http://localhost:8000/api/contact/', {
+      const response = await fetch(`${BASE_API_URL}/api/contact/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

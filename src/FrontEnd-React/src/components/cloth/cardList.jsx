@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './cardList.css';
 import Filter from './filter/filter';
+import { BASE_API_URL } from "../../constants";
 
 export default class CardList extends Component {
   constructor(props) {
@@ -13,14 +14,13 @@ export default class CardList extends Component {
       itemsPerPage: 8,
     };
   }
-
   handleCardClick = (id) => {
     window.location.href = `/clothes-details/${id}`;
   }
 
   componentDidMount() {
     this.setState({ isLoading: true });
-    fetch('http://localhost:8000/api/clothes/')
+    fetch(`${BASE_API_URL}/api/clothes/`)
       .then(response => {
         if (response.ok) {
           return response.json();
@@ -40,6 +40,8 @@ export default class CardList extends Component {
   }
 
   render() {
+    console.log(BASE_API_URL)
+
     const { prendas, isLoading, error, currentPage, itemsPerPage } = this.state;
 
     const indexOfLastItem = currentPage * itemsPerPage;

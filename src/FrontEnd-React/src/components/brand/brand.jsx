@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './brand.css';
+import { BASE_API_URL } from "../../constants";
 
 export default class Brand extends Component {
   constructor(props) {
@@ -13,7 +14,7 @@ export default class Brand extends Component {
 
   componentDidMount() {
     this.setState({ isLoading: true });
-    fetch('http://localhost:8000/api/brands/')
+    fetch(`${BASE_API_URL}/api/brands/`)
       .then(response => {
         if (response.ok) {
           return response.json();
