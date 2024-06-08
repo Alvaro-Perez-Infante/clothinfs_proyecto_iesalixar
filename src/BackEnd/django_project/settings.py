@@ -147,6 +147,8 @@ CORS_ALLOWED_ORIGINS = [
     'https://clothinfs-proyecto-iesalixar-frontend.onrender.com',
     'https://clothinfs-proyecto-iesalixar-frontend.onrender.com/',
 ]
+CORS_ALLOW_ALL_ORIGINS = True
+
 
 if not DEBUG:
     STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
