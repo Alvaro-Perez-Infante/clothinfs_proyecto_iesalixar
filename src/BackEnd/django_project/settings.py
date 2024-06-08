@@ -155,8 +155,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',
-    'https://clothinfs-proyecto-iesalixar.onrender.com/',
-    ]
+    'https://clothinfs-proyecto-iesalixar-frontend.onrender.com',
+]
 
 if not DEBUG:
     STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
