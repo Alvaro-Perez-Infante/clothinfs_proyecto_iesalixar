@@ -1,72 +1,112 @@
-import React, { Component } from 'react';
-import './aboutUs.css'
+import React, { Component } from "react";
+import "./aboutUs.css";
+
 export default class AboutUs extends React.Component {
   render() {
     return (
       <div>
         <div>
-          <img src="/aboutUs/1.png"/>
+          <img src="/aboutUs/1.png" alt="About Us 1" />
         </div>
-        <div>
-          <p>LA MODA COMO FORMA DE EXPRESIÓN</p>
-          <p>
-            ¿Cansado de vestir con las mismas marcas de siempre? ¿No te gustaría vestir de una manera única?
-          </p>
-          <p>
-            En Nerety creemos en la singularidad de las personas. Queremos que vistas de una manera única, de una manera diferente al resto.
-          </p>
-          <p>
-            En esta plataforma solo encontrarás prendas exclusivas y muy limitadas. En Nerety está presente la mejor moda emergente urbana. Reunimos las mejores prendas de tendencia y calidad.
-          </p>
-          <p>
-            Actuamos como un filtro, hacemos el trabajo por ti, te damos la garantía de que Nerety te ofrecerá en todo momento lo que realmente está de moda.
-          </p>
+        <div className="text-container">
+          <div className="text-block">
+            <h1>LA MODA COMO FORMA DE EXPRESIÓN</h1>
+            <p>
+              <strong>
+                ¿Cansado de vestir con las mismas marcas de siempre? ¿No te
+                gustaría vestir de una manera única?
+              </strong>
+            </p>
+            <p>
+              En ClothInfs creemos en la singularidad de las personas. Queremos que
+              vistas de una manera única, de una manera diferente al resto.
+            </p>
+            <p>
+              En esta plataforma solo encontrarás prendas exclusivas y muy
+              limitadas. En ClothInfs está presente la mejor moda emergente urbana.
+              Reunimos las mejores prendas de tendencia y calidad.
+            </p>
+            <p>
+              Actuamos como un filtro, hacemos el trabajo por ti, te damos la
+              garantía de que ClothInfs te ofrecerá en todo momento lo que
+              realmente está de moda.
+            </p>
+          </div>
         </div>
-        <div>
-            <img src="/aboutUs/2.1.png"/>         
-            <img src="/aboutUs/2.2.png"/>
-            <img src="/aboutUs/2.3.png"/>   
+        <div className="image-row">
+          <img src="/aboutUs/2.1.png" alt="About Us 2.1" />
+          <img src="/aboutUs/2.2.png" alt="About Us 2.2" />
+          <img src="/aboutUs/2.3.png" alt="About Us 2.3" />
         </div>
-        <div>
-          <p>NUESTRA HISTORIA</p>
+        <div class="text-block-history">
+          <h1>NUESTRA HISTORIA</h1>
           <p>
-            Mucho antes de que naciera Nerety, los emprendedores Alex Puigmal y Javier Bonnin, dos jóvenes de Barcelona, apasionados por el streetwear y la moda, se organizaron para crear su marca de ropa. ¿Spoiler? 0 ventas, 0 seguidores, 0 repercusión. Un fracaso. Obviamente, cerraron la marca.
+            Mucho antes de que naciera ClothInfs, el emprendedor Álvaro Pérez,
+            un joven de Sevilla, apasionado por el streetwear y la moda, 
+            pensó un modelo de negocio que podría funcionar perfectamente
+            por la falta de visualización en las marcas de ropa menos influyentes.{" "}
           </p>
           <p>
-            Con el paso de los años, se dieron cuenta que existían dos problemas muy grandes en la sociedad:
+            Con el paso de los años, se dio cuenta de que existían dos problemas
+            muy grandes en la sociedad:
           </p>
           <ol>
             <li>
-              Muchos factores impiden a las nuevas marcas crecer. El sector de la moda es muy competitivo y a las marcas emergentes (de reciente creación), les cuesta mucho ganar visibilidad y ventas. Nos encontramos a muchas marcas con un alto potencial, pero sin embargo no disponen de las herramientas para poder crecer.
+              Muchos factores impiden a las nuevas marcas crecer. El sector de
+              la moda es muy competitivo y a las marcas emergentes (de reciente
+              creación), les cuesta mucho ganar visibilidad y ventas. Nos
+              encontramos a muchas marcas con un alto potencial, pero sin
+              embargo no disponen de las herramientas para poder crecer.
             </li>
             <li>
-              Los jóvenes están cansados de vestir con las mismas marcas de siempre. Buscan una manera de diferenciarse del resto, a través de prendas únicas que sigan las tendencias del momento. Se quieren alejar de las marcas fast-fashion y de lo tradicional. Las marcas emergentes que aportan esta singularidad y exclusividad están muy escondidas y cuesta mucho encontrarlas.
+              Los jóvenes están cansados de vestir con las mismas marcas de
+              siempre. Buscan una manera de diferenciarse del resto, a través de
+              prendas únicas que sigan las tendencias del momento. Se quieren
+              alejar de las marcas fast-fashion y de lo tradicional. Las marcas
+              emergentes que aportan esta singularidad y exclusividad están muy
+              escondidas y cuesta mucho encontrarlas.
             </li>
           </ol>
           <p>
-            Aquí comienza un camino donde Nerety encuentra su razón de ser, ayudando a consolidar los mejores proyectos de moda, y con la intención de presentar el mejor streetwear al mundo, contando con la moda emergente como elemento imprescindible para sentar las bases de la moda del futuro.
+            Aquí comienza un camino donde ClothInfs encuentra su razón de ser,
+            ayudando a consolidar los mejores proyectos de moda, y con la
+            intención de presentar el mejor streetwear al mundo, contando con la
+            moda emergente como elemento imprescindible para sentar las bases de
+            la moda del futuro.
           </p>
         </div>
-        <div>
-        <img src="/aboutUs/3.1.png"/>
-        <img src="/aboutUs/3.2.png"/>
-        <img src="/aboutUs/3.3.png"/>          
+        <div className="image-row">
+          <img src="/aboutUs/3.1.png" alt="About Us 3.1" />
+          <img src="/aboutUs/3.2.png" alt="About Us 3.2" />
+          <img src="/aboutUs/3.3.png" alt="About Us 3.3" />
         </div>
-        <div>
-          <p>Estamos en constante actualización, ¿Para qué?</p>
-          <p>Para ofrecerte las últimas tendencias y novedades de la moda streetwear.</p>
-          <p>
-            En Nerety no encontrarás moda convencional ni fast fashion, sino prendas de última tendencia y de muy alta calidad creadas en España; cuidadosamente seleccionadas por nuestro equipo de expertos en moda.
-          </p>
-          <p>
-            Estamos en constante actualización, ¿Para qué?
-          </p>
-          <p>
-            Para ofrecerte las últimas tendencias y novedades de la moda streetwear.
-          </p>
-          <p>
-            En Nerety no encontrarás moda convencional ni fast fashion, sino prendas de última tendencia y de muy alta calidad creadas en España; cuidadosamente seleccionadas por nuestro equipo de expertos en moda.
-          </p>
+        <div className="text-container">
+          <div className="text-block">
+            <p>
+              <strong>Estamos en constante actualización, ¿Para qué?</strong>
+            </p>
+            <p>
+              Para ofrecerte las últimas tendencias y novedades de la moda
+              streetwear.
+            </p>
+            <p>
+              En ClothInfs no encontrarás moda convencional ni fast fashion, sino
+              prendas de última tendencia y de muy alta calidad creadas en España;
+              cuidadosamente seleccionadas por nuestro equipo de expertos en moda.
+            </p>
+            <p>
+              <strong>Estamos en constante actualización, ¿Para qué?</strong>
+            </p>
+            <p>
+              Para ofrecerte las últimas tendencias y novedades de la moda
+              streetwear.
+            </p>
+            <p>
+              En ClothInfs no encontrarás moda convencional ni fast fashion, sino
+              prendas de última tendencia y de muy alta calidad creadas en España;
+              cuidadosamente seleccionadas por nuestro equipo de expertos en moda.
+            </p>
+          </div>
         </div>
       </div>
     );

@@ -1,87 +1,153 @@
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    background-color: #333;
-    color: white;
-  }
-  
-  .navbar-sections {
-    display: flex;
-  }
-  
-  .navbar-section {
-    margin-right: 20px;
-    position: relative; /* Para posicionar correctamente el menú desplegable */
-    cursor: pointer; /* Cambia el cursor a una mano cuando pasa sobre la imagen */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  position: relative; /* Añadido para posicionamiento del menú desplegable */
+}
 
-  }
-  
-  .navbar-section a {
-    color: white;
-    text-decoration: none;
-  }
-  
-  /* Estilos para el menú desplegable */
-  .ropa-menu {
-    position: absolute;
-    top: calc(100% + 2px); /* Posiciona el menú debajo del elemento padre */
-    left: 0;
-    background-color: white;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-top: none;
-    display: none; /* Oculta el menú por defecto */
-  }
-  
-  /* Muestra los elementos del menú uno debajo del otro */
-  .ropa-menu a {
-    display: block;
-    color: black;
-    text-decoration: none;
-    padding: 5px 0;
-  }
-  
-  /* Muestra el menú cuando se pasa el ratón por encima */
-  .navbar-section:hover .ropa-menu {    
-    display: block;
-  }
-  .navbar-logo{
-  
-  }
-  .navbar-logo img {
-    width: 100px; /* Ajusta el tamaño según tus necesidades */
-    cursor: pointer; /* Cambia el cursor a una mano cuando pasa sobre la imagen */
-  }
-  
-  
-  .navbar-profile a {
-    margin-left: 10px;
-    text-decoration: none; /* Quita el subrayado */
-    color: white; /* Cambia el color de los enlaces a blanco */
-  }
-  
-  /* Estilos para el menú desplegable de MARCAS */
-.marcas-menu {
-    position: absolute;
-    top: calc(100% + 5px);
-    left: 0;
-    background-color: white;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-top: none;
+.navbar-sections {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-section {
+  position: relative;
+  cursor: pointer;
+  padding: 20px;
+  padding-bottom: 15px;
+}
+
+.navbar-section a {
+  color: #7a7a7a;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: bold;
+  border-bottom: 2px solid transparent; /* Añade un borde inferior transparente */
+  transition: border-bottom 0.3s; /* Agrega una transición suave para el cambio de borde inferior */
+}
+
+.navbar-section:hover a {
+  color: rgb(0, 0, 0);
+  border-bottom-color: #000; /* Cambia el color del borde inferior al pasar el ratón */
+}
+
+.navbar-section.ropanavbar a {
+  border-bottom: none; /* Elimina el borde inferior en los enlaces del menú desplegable */
+}
+
+.navbar-section.ropanavbar:hover a {
+  border-bottom: 2px solid transparent; /* Restablece el borde inferior transparente en el menú desplegable */
+}
+
+.ropa-menu {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  background-color: #fff;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-top: none;
+  display: none;
+  width: 200px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.ropa-menu a {
+  display: block;
+  color: #333;
+  text-decoration: none;
+  padding: 5px 10px;
+}
+
+.navbar-section:hover .ropa-menu {
+  display: block;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  margin-left: 110px; /* Ajusta el margen izquierdo del logo */
+}
+
+.navbar-logo {
+  margin-right: 20px; /* Ajusta el margen derecho del logo */
+}
+
+.navbar-section:first-child {
+  margin-right: auto; /* Mueve el primer botón hacia la izquierda */
+}
+
+.navbar-logo img {
+  height: 50px;
+}
+
+.navbar-profile {
+  margin-left: auto; /* Añadido para empujar los elementos al lado derecho */
+}
+
+.navbar-profile a {
+  margin-left: 10px;
+  text-decoration: none;
+  color: #333;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.navbar-profile a:hover {
+  color: rgb(0, 0, 0);
+}
+
+.navbar-collapse-toggle img {
+  display: none;
+  height: 30px; /* Tamaño reducido de la imagen de las tres barritas */
+}
+
+@media screen and (max-width: 768px) {
+  .navbar-sections {
     display: none;
   }
-  
-  .marcas-menu a {
+
+  .navbar-collapse-toggle img {
     display: block;
-    color: black;
+  }
+
+  .navbar-dropdown {
+    display: none;
+    flex-direction: column;
+    background-color: #fff;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    border: 1px solid #000; /* Borde negro fino */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+  
+  .navbar-dropdown a {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+    color: #7a7a7a;
     text-decoration: none;
-    padding: 5px 0;
+    font-size: 15px;
+    font-weight: bold;
   }
   
-  .navbar-section:hover .marcas-menu {
-    display: block;
+  .navbar-dropdown a:hover {
+    color: rgb(0, 0, 0); /* Cambia el color al pasar el ratón por encima */
   }
   
+  
+  .navbar-dropdown a:last-child {
+    border-bottom: none;
+  }
+  
+
+  .navbar-dropdown.show {
+    display: flex;
+  }
+}

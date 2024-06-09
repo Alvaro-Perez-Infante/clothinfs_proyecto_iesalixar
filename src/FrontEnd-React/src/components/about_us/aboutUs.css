@@ -1,28 +1,63 @@
+/* Importa la fuente Lato desde Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;600&display=swap');
+
+body {
+  font-family: 'Lato', sans-serif;
+}
+
 .about-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  .about-container img {
-    max-width: 100%;
-    height: auto;
-  }
-  
-  .about-container p {
-    margin-bottom: 10px;
-  }
-  
-  .about-container ol {
-    margin-bottom: 10px;
-    margin-left: 20px;
-  }
-  
-  .about-container div {
-    margin-bottom: 30px;
-  }
-  
-  .about-container div:last-child {
-    margin-bottom: 0;
-  }
-  
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.about-container img {
+  max-width: 100%;
+  height: auto;
+}
+
+.image-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.about-container p {
+  margin-bottom: 20px; /* Añade margen inferior para separación entre párrafos */
+}
+
+.about-container strong {
+  font-weight: bold;
+}
+
+.about-container ol {
+  margin-bottom: 20px; /* Añade margen inferior para separación entre lista y párrafos */
+  margin-left: 20px;
+  text-align: left;
+}
+
+.about-container div {
+  margin-bottom: 30px;
+}
+
+.about-container div:last-child {
+  margin-bottom: 0;
+}
+
+.text-container {
+  text-align: center;
+}
+
+.text-block {
+  display: inline-block;
+  text-align: left;
+  max-width: 800px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.text-block-history {
+  max-width: 1700px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: 100px;
+}
