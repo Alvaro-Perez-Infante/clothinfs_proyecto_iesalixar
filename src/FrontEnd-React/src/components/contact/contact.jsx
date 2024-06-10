@@ -49,19 +49,40 @@ export default class Contact extends Component {
 
     return (
       <div className="contact-container">
-        <div className="form-container">
+        <div className="form-container-title">
           <h2>Formulario de Contacto</h2>
+        </div>
+        <div className="form-container">
+          <p className="contact-description">
+            Si tienes alguna duda, queja, sugerencia o simplemente deseas cambiar o devolver alguna prenda de ClothInfs, puedes enviar un correo electrónico a <a href="mailto:clothinfscoremain@outlook.es">clothinfscoremain@outlook.es</a> o rellenando el siguiente formulario.
+            <br /><br />
+            Si tienes una marca y deseas colaborar con nosotros, contáctanos en este correo electrónico: <a href="mailto:clothinfscoremain@outlook.es">clothinfscoremain@outlook.es</a>.
+            <br /><br />
+            Nos pondremos en contacto contigo en un plazo de 24 a 72 horas laborables.
+          </p>
           <form onSubmit={this.handleSubmit}>
             <div className="form-group">
-              <label htmlFor="asunto">Asunto:</label>
-              <input type="text" id="asunto" name="asunto" value={asunto} onChange={this.handleChange} />
+              <label htmlFor="asunto">
+                <span>Asunto:</span>
+                <input type="text" id="asunto" name="asunto" value={asunto} onChange={this.handleChange} />
+              </label>
             </div>
             <div className="form-group">
-              <label htmlFor="mensaje">Mensaje:</label>
-              <textarea id="mensaje" name="mensaje" value={mensaje} onChange={this.handleChange}></textarea>
+              <label htmlFor="mensaje">
+                <span>Mensaje:</span>
+                <textarea id="mensaje" name="mensaje" value={mensaje} onChange={this.handleChange}></textarea>
+              </label>
             </div>
-            <button type="submit">Enviar</button>
+            <button type="submit">ENVIAR MENSAJE</button>
           </form>
+        </div>
+        <div className="clothinfs-info">
+          <h3>¿Qué es ClothInfs?</h3>
+          <p>
+            ClothInfs es el primer Marketplace Online donde puedes encontrar las mejores marcas independientes de streetwear.
+            <br /><br />
+            Seleccionamos cuidadosamente las marcas emergentes con mayor potencial y las acercamos a todos esos jóvenes que están cansados de vestir con marcas convencionales.
+          </p>
         </div>
       </div>
     );
