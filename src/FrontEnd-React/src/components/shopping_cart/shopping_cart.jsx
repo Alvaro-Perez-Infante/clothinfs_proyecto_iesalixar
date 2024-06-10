@@ -37,20 +37,26 @@ export default class ShoppingCart extends Component {
 
     return (
       <div className="shopping-cart-container">
-        <h2>Shopping Cart</h2>
-        <div className="cart-items">
+        <h2 className="cart-title">Tu Carrito de Compras</h2>
+        <div className="cart-items-list">
           {/* Aquí se mostrarán los artículos agregados al carrito */}
-          {items.map((item, index) => (
-            <div key={index} className="cart-item">
-              <span>{item.name}</span>
-              <span>${item.price}</span>
-            </div>
-          ))}
+          {items.length === 0 ? (
+            <p>Su carrito está vacío</p>
+          ) : (
+            items.map((item, index) => (
+              <div key={index} className="cart-item">
+                <span className="item-name">{item.name}</span>
+                <span className="item-price">${item.price}</span>
+              </div>
+            ))
+          )}
         </div>
-        <div className="cart-total">
-          <strong>Total:</strong> ${total}
-        </div>
-        <button onClick={this.sendEmail}>Comprar</button>
+        {items.length > 0 && (
+          <div className="cart-total">
+            <strong>Total:</strong> ${total}
+          </div>
+        )}
+        <button className="buy-button" onClick={this.sendEmail}>COMPRAR PRODUCTOS</button>
       </div>
     );
   }
