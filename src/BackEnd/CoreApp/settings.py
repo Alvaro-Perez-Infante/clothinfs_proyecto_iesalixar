@@ -32,8 +32,8 @@ BASE_APPS = [
 ]
 
 LOCAL_APPS = [
-    #'prendaApp',
-    #'Auth',
+    'ClothApp',
+    'Auth',
 ]
 
 
@@ -140,8 +140,11 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOW_ALL_ORIGINS = True
-CORS_ALLOWED_ORIGINS=['clothinfs-proyecto-iesalixar.onrender.com'] #O necesita https://¿? probemos
-
+CORS_ALLOWED_ORIGINS=['clothinfs-proyecto-iesalixar.onrender.com'] 
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:5173', #FRONT
+    'https://clothinfs-proyecto-iesalixar-frontend.onrender.com', #FRONT
+    ]
 
 if not DEBUG:
     STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
