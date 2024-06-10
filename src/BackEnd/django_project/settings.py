@@ -13,9 +13,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY',default='your secret key')
 DEBUG = 'RENDER' not in os.environ
 
 ALLOWED_HOSTS = [
-                'clothinfs-proyecto-iesalixar.onrender.com',
-                'localhost',
-                'clothinfs-proyecto-iesalixar-frontend.onrender.com',
+
                 ]
 RENDER_EXTERNAL_HOSTNAME=os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME: ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
@@ -142,11 +140,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:5173',
-    'https://clothinfs-proyecto-iesalixar-frontend.onrender.com',
-    'https://clothinfs-proyecto-iesalixar-frontend.onrender.com/',
-]
+
 CORS_ALLOW_ALL_ORIGINS = True
 
 
