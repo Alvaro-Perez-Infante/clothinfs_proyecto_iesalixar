@@ -1,19 +1,12 @@
 from pathlib import Path
 import os
 import dj_database_url
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 SECRET_KEY = os.environ.get('SECRET_KEY',default='your secret key')
-# SECURITY WARNING: keep the secret key used in production secret!
 DEBUG = 'RENDER' not in os.environ
 
 ALLOWED_HOSTS = ["*"]
-CORS_ALLOW_ALL_ORIGINS = True
-CORS_ALLOWS_CREDENTIALS = True
 
 RENDER_EXTERNAL_HOSTNAME=os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME: ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
@@ -50,9 +43,6 @@ INSTALLED_APPS = BASE_APPS+THIRDS_APPS+LOCAL_APPS
 
 
 MIDDLEWARE = [
-    # Cors
-    'corsheaders.middleware.CorsMiddleware',
-    # Fin-Cors
     'django.middleware.security.SecurityMiddleware',
     # Whitenoise
     'whitenoise.middleware.WhiteNoiseMiddleware',
@@ -63,6 +53,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # Cors
+    'corsheaders.middleware.CorsMiddleware',
+    # Fin-Cors
 ]
 
 ROOT_URLCONF = 'CoreApp.urls'
@@ -85,10 +78,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'CoreApp.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
 DATABASES = {
     'default': dj_database_url.config(
         default='sqlite:///db.sqlite3',
@@ -97,8 +86,6 @@ DATABASES = {
 
 }
 
-# Password validation
-# https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -115,10 +102,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-# Internationalization
-# https://docs.djangoproject.com/en/5.0/topics/i18n/
-
 LANGUAGE_CODE = 'es-es'
 
 TIME_ZONE = 'UTC'
@@ -128,13 +111,7 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.0/howto/static-files/
-
 STATIC_URL = 'static/'
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -144,6 +121,8 @@ if not DEBUG:
     STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
     STATICFILES_STORAGE= 'whitenoise.storage.CompressedManifestStaticFilesStorage'
     
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWS_CREDENTIALS = True
 
 REST_FRAMEWORK = {'DEFAULT_SCHEMA_CLASS':'rest_framework.schemas.coreapi.AutoSchema',}
 
