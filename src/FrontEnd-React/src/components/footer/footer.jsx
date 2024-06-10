@@ -17,9 +17,9 @@ export default class Footer extends Component {
             </div>
             <div className="col-md-6">
               <h5>Contacto</h5>
-              <p>Dirección: 123 Calle Principal, Ciudad</p>
-              <p>Teléfono: +123456789</p>
-              <p>Email: info@example.com</p>
+              <p>Dirección: 43 Calle Esquimo, Sevilla</p>
+              <p>Teléfono: +610879535</p>
+              <p>Email: clothinfscoremain@outlook.es</p>
             </div>
           </div>
         </div>

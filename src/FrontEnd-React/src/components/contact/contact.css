@@ -50,16 +50,30 @@ label span {
 }
 
 input[type="text"],
-textarea {
-  width: 96.5%;
+textarea,
+button {
+  width: calc(100% - -336px); /* Ajustar el ancho de los input y el botón */
   padding: 10px;
   border: 1px solid #ccc;
   margin: 0 auto;
   border-radius: 0;
+  box-sizing: border-box; /* Incluir el padding y border en el cálculo del ancho */
+}
+
+input[type="text"]#asunto {
+  width: calc(100% - -336px); /* Ajustar el ancho del input de Asunto */
+}
+
+
+.button-container {
+  width: 100%;
+  text-align: center;
+  margin: 20px auto;
+  margin-bottom: 60px;
 }
 
 button {
-  width: 100%;
+  width: 212%;
   padding: 10px;
   background-color: #000;
   color: #fff;
@@ -68,6 +82,7 @@ button {
   cursor: pointer;
   display: block;
   margin: 20px auto;
+  margin-top: 30px;
   margin-bottom: 60px;
   text-align: center;
 }

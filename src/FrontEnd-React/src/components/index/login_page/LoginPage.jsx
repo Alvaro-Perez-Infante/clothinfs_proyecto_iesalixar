@@ -11,6 +11,7 @@ export class LoginPage extends React.Component {
       password: "",
       error: "",
       loggedIn: false,
+      inputWidth: 280, // Ancho inicial de los input
     };
   }
 
@@ -46,8 +47,20 @@ export class LoginPage extends React.Component {
     }
   };
 
+  componentDidMount() {
+    // Ajustar el ancho de los input al cargar el componente
+    this.adjustInputWidth();
+  }
+
+  adjustInputWidth = () => {
+    const containerWidth = document.querySelector(".LoginPage-Container").offsetWidth;
+    // Calcular el ancho deseado (por ejemplo, el 80% del contenedor)
+    const desiredWidth = containerWidth * 0.16;
+    this.setState({ inputWidth: desiredWidth });
+  };
+
   render() {
-    const { username, password, error, loggedIn } = this.state;
+    const { username, password, error, loggedIn, inputWidth } = this.state;
 
     if (loggedIn) {
       return <Navigate to="/home" />;
@@ -68,6 +81,7 @@ export class LoginPage extends React.Component {
                 value={username}
                 onChange={this.handleChange}
                 className="inputText"
+                style={{ width: inputWidth }} // Establecer el ancho dinámicamente
               />
             </label>
 
@@ -79,6 +93,7 @@ export class LoginPage extends React.Component {
                 value={password}
                 onChange={this.handleChange}
                 className="inputText"
+                style={{ width: inputWidth }} // Establecer el ancho dinámicamente
               />
             </label>
           </div>

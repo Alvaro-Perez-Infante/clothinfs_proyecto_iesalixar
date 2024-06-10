@@ -46,30 +46,32 @@ export class RegisterPage extends React.Component {
   render() {
     return (
       <>
-        <div className="card-main">
-          <h1 className="titulo">ClothInfs</h1>
-          <h3 className="titulo">Crear Cuenta</h3>
+        <div className="RegisterPage-Container">
+          <h3 className="titulo">Registro</h3>
+          <p className="subtitulo">Por favor complete la siguiente información:</p>
 
           <form onSubmit={this.handleSubmit}>
             {" "}
             {/* Asociar el método handleSubmit al evento onSubmit del formulario */}
-            <div>
+            <div className="form-group">
               <label>
                 Nombre de Usuario:
-                <input type="text" name="username" />
+                <input type="text" name="username" className="inputText" style={{ width: '100%' }} />
               </label>
               <br></br>
               <label>
                 Correo Electrónico:
-                <input type="email" name="email" />
+                <input type="email" name="email" className="inputText" style={{ width: '92%' }} />
               </label>
+              <br></br>
               <label>
                 Contraseña:
-                <input type="password" name="password" />
+                <input type="password" name="password" className="inputText" style={{ width: '100%' }} />
               </label>
             </div>
-            <button className="botonInicio" type="submit">
-              Confirmar Registrarse
+            <br></br>
+            <button className="botonInicioCrear" type="submit">
+              CREAR UNA CUENTA
             </button>
           </form>
         </div>
