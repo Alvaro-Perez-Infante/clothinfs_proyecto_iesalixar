@@ -1,0 +1,63 @@
+.LoginPage-Container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+  }
+  
+  .titulo {
+    font-size: 20px;
+    margin-top: 125px;
+    margin-bottom: 10px;
+  }
+  
+  form {
+    width: 300px;
+    margin-top: 40px;
+  }
+  
+  form label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  form input[type="text"],
+  form input[type="password"] {
+    width: 93%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+  }
+  
+  .error {
+    color: red;
+    margin-bottom: 10px;
+  }
+  
+  .botonInicio {
+    width: 100%;
+    padding: 15px;
+    background-color: #000000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .botonInicio:hover {
+    background-color: #000000;
+  }
+  
+  .registro-link {
+    margin-top: -20px;
+    margin-bottom: 220px;
+  }
+  
+  .registro-link a {
+    color: #000000;
+    text-decoration: underline; /* Subraya el enlace */
+  }
+  
+  .registro-link a:hover {
+    text-decoration: none; /* Quita el subrayado cuando se pasa el cursor sobre el enlace */
+  }
+  

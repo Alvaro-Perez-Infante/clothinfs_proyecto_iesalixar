@@ -10,24 +10,22 @@ export class LoginPage extends React.Component {
       username: "",
       password: "",
       error: "",
-      loggedIn: false, // Nuevo estado para indicar si el usuario ha iniciado sesión
+      loggedIn: false,
     };
   }
 
   handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value,
-      error: "", // Limpiar el mensaje de error al cambiar los campos
+      error: "",
     });
   };
 
   handleSubmit = async (event) => {
-    event.preventDefault(); // Evitar que el formulario se envíe automáticamente
+    event.preventDefault();
 
-    // Obtener los datos del estado
     const { username, password } = this.state;
 
-    // Realizar la solicitud POST para iniciar sesión
     try {
       const response = await fetch(`${BASE_API_URL}/api/users/login/`, {
         method: "POST",
@@ -39,30 +37,26 @@ export class LoginPage extends React.Component {
 
       const data = await response.json();
       if (data.message) {
-        // Inicio de sesión exitoso
         this.setState({ loggedIn: true });
       } else {
-        // Inicio de sesión fallido
         this.setState({ error: data.error });
       }
     } catch (error) {
       console.error("Error:", error);
-      // Manejar el error de la solicitud
     }
   };
 
   render() {
     const { username, password, error, loggedIn } = this.state;
 
-    // Si el usuario ha iniciado sesión, redirigir a la ruta /home
     if (loggedIn) {
       return <Navigate to="/home" />;
     }
 
     return (
       <div className="LoginPage-Container">
-        <h1 className="titulo">ClothInfs</h1>
-        <h3 className="titulo">Inicio de Sesión</h3>
+        <h3 className="titulo">Iniciar Sesión</h3>
+        <p className="instrucciones">Por favor introduce su usuario y contraseña:</p>
 
         <form onSubmit={this.handleSubmit}>
           <div>
@@ -73,6 +67,7 @@ export class LoginPage extends React.Component {
                 name="username"
                 value={username}
                 onChange={this.handleChange}
+                className="inputText"
               />
             </label>
 
@@ -83,15 +78,16 @@ export class LoginPage extends React.Component {
                 name="password"
                 value={password}
                 onChange={this.handleChange}
+                className="inputText"
               />
             </label>
           </div>
           {error && <p className="error">{error}</p>}
           <button className="botonInicio" type="submit">
-            Iniciar Sesión
+            INICIAR SESIÓN
           </button>
         </form>
-        <div>¿No tienes cuenta? <a href="/register">Registrate</a></div>
+        <div className="registro-link">¿No tienes una cuenta? <a href="/register">Regístrate</a></div>
       </div>
     );
   }
