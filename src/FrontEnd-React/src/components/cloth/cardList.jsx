@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './cardList.css';
 import Filter from './filter/filter';
 import { BASE_API_URL } from "../../constants";
+import CreateAdmin from '../admin/admin';
 
 export default class CardList extends Component {
   constructor(props) {
@@ -93,6 +94,7 @@ export default class CardList extends Component {
           <span>{` Página ${currentPage} de ${Math.ceil(prendas.length / itemsPerPage)} `}</span>
           <button onClick={nextPage} disabled={currentPage === Math.ceil(prendas.length / itemsPerPage)}>Siguiente</button>
         </div>
+        <CreateAdmin/>
       </div>
     );
   }

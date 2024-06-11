@@ -8,6 +8,9 @@ from ClothApp.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/create-admin/', create_admin_user, name='create-admin'),
+    
+    
     path('api/users/register/', UserCreateView.as_view(), name='user-create'),
     path('api/users/login/', UserLoginView.as_view(), name='user-login'),
     
