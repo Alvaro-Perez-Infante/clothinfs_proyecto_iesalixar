@@ -35,6 +35,7 @@ THIRDS_APPS = [
     'rest_framework',
     'import_export',
     'django_ckeditor_5',
+    
    
 ]
 

@@ -2,15 +2,14 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
-
 from Auth.views import *
 from ClothApp.views import *
-
+from rest_framework.documentation  import include_docs_urls
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/create-admin/', create_admin_user, name='create-admin'),
-    
-    
+    path('docs/', include(include_docs_urls(title="API")), name='api-docs'),
+
     path('api/users/register/', UserCreateView.as_view(), name='user-create'),
     path('api/users/login/', UserLoginView.as_view(), name='user-login'),
     
