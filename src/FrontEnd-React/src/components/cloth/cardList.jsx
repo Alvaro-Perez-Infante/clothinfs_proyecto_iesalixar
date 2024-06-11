@@ -94,7 +94,7 @@ export default class CardList extends Component {
           <span>{` Página ${currentPage} de ${Math.ceil(prendas.length / itemsPerPage)} `}</span>
           <button onClick={nextPage} disabled={currentPage === Math.ceil(prendas.length / itemsPerPage)}>Siguiente</button>
         </div>
-        <CreateAdmin/>
+        {/*<CreateAdmin/>*/}
       </div>
     );
   }

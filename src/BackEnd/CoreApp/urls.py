@@ -7,7 +7,7 @@ from ClothApp.views import *
 from rest_framework.documentation  import include_docs_urls
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/create-admin/', create_admin_user, name='create-admin'),
+    #path('api/create-admin/', create_admin_user, name='create-admin'),
     path('docs/', include_docs_urls(title="API")),
 
     path('api/users/register/', UserCreateView.as_view(), name='user-create'),
