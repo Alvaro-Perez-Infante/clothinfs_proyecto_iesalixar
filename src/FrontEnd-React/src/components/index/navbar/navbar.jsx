@@ -79,7 +79,7 @@ class Navbar extends Component {
                   Camisas
                 </a>
                 <a onClick={() => this.handleRopaItemClick("Polos")}>Polos</a>
-                <a onClick={() => this.handleRopaItemClick("Pantalon")}>
+                <a onClick={() => this.handleRopaItemClick("Pantalón")}>
                   Pantalones
                 </a>
                 <a onClick={() => this.handleRopaItemClick("Faldas")}>Faldas</a>
