@@ -1,7 +1,7 @@
 import { useState } from "react";
 import tokenApi from "../js/tokenApi";
 import { useNavigate } from "react-router-dom";
-import { ACCESS_TOKEN, REFRESH_TOKEN } from "../../../constants";
+import { ACCESS_TOKEN, REFRESH_TOKEN, USERNAME } from "../../../constants";
 
 function Form({ route, method }) {
     const [username, setUsername] = useState("");
@@ -20,6 +20,7 @@ function Form({ route, method }) {
             if (method === "login") {
                 localStorage.setItem(ACCESS_TOKEN, res.data.access);
                 localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
+                localStorage.setItem(USERNAME, username);
                 navigate("/")
             } else {
                 navigate("/login")
