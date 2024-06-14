@@ -1,7 +1,7 @@
 .footer {
   background-color: #333;
   color: #fff;
-  padding: 30px 0;
+  padding: 5px 0; /* Reducir el padding del footer */
   text-align: center;
   width: 100%;
   z-index: 1000;
@@ -14,7 +14,7 @@
 }
 
 .footer ul li {
-  margin-bottom: 10px;
+  margin-bottom: 5px; /* Reducir el margen inferior de los elementos de la lista */
 }
 
 .footer ul li a {
@@ -30,7 +30,6 @@
   width: 100%; /* Ajusta el ancho del contenedor para que coincida con el footer */
   max-width: 1200px; /* Establece un ancho máximo para el contenedor */
   margin: 0 auto; /* Centra el contenedor en la página */
-  padding-bottom: 10px; /* Ajusta el margen inferior del contenido principal para dejar espacio para el footer */
 }
 
 .row {
@@ -40,12 +39,18 @@
 }
 
 .col-md-6 {
-  flex: 0 0 calc(50% - 30px); /* Ajusta el ancho de las columnas */
-  max-width: calc(50% - 30px); /* Ajusta el ancho máximo de las columnas */
-  padding: 0 15px;
+  padding: 0 10px; /* Reducir el padding de las columnas */
   text-align: left; /* Alinea el texto a la izquierda en las columnas */
+  margin-bottom: 10px;
+  margin-top: -10px;
 }
 
 .col-md-6 h5 {
-  margin-bottom: 15px; /* Añade un poco de espacio después de los títulos */
+  margin-bottom: 10px; /* Reducir el margen inferior de los títulos */
+  font-size: 1em; /* Reducir el tamaño de la fuente de los títulos */
+}
+
+.col-md-6 p {
+  margin: 5px 0; /* Reducir el margen superior e inferior de los párrafos */
+  font-size: 0.9em; /* Reducir el tamaño de la fuente de los párrafos */
 }

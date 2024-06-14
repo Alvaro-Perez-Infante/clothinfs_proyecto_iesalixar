@@ -10,32 +10,46 @@ class Filter extends Component {
       filtros: [
         {
           nombre: "TALLA",
-          opciones: ["XS", "S", "M"]
+          opciones: ["XS", "S", "M", "L", "XL", "XXL"]
         },
         {
           nombre: "MARCA",
-          opciones: ["Nike", "Adidas", "Puma"]
+          opciones: ["Inalbis", "Les Gars", "Mint Eyes", "Signal", "Horizon Studios",
+             "Humpier", "Signal", "Horizon Studios", "Old School", "Shameless Collective",
+              "Half Studios", "Stooner", "Esenzia", "Goated"]
         },
         {
           nombre: "COLOR",
-          opciones: ["Rojo", "Azul", "Verde"]
+          opciones: ["Amarillo", "Azul", "Azul Celeste", "Azul Marino", "Azul Oscuro", "Beige", "Blanco Roto",
+            "Gris", "Gris Oscuro", "Lila", "Marrón","Multicolor", "Naranja", "Negro",
+            "Oro", "Plata", "Rojo", "Rosa", "Verde", "Verde Oscuro"
+          ]
         },
         {
           nombre: "TIPO DE PRODUCTO",
-          opciones: ["Camiseta", "Pantalón", "Zapato"]
+          opciones: ["Sudaderas", "Camisas", "Camisetas", "Polos", "Pantalón", "Top",
+            "Faldas", "Vestidos", "Calcetines", "Calzado", "Baño", "Accesorios",]
         },
         {
           nombre: "GÉNERO",
-          opciones: ["Hombre", "Mujer", "Unisex"]
+          opciones: ["Hombre", "Mujer", "Niño", "Niña"]
         },
         {
           nombre: "PRECIO",
           opciones: null // Dejamos este campo como null para manejarlo de manera especial
         }
       ],
-      filtrosAbiertos: {}, // Para almacenar el estado de cada filtro
+      filtrosAbiertos: {}, // Para almacenar el estado de cada filtro abierto o cerrado
       precioMin: 0, // Valor mínimo del rango de precio
-      precioMax: 100 // Valor máximo del rango de precio
+      precioMax: 100, // Valor máximo del rango de precio
+      filtrosSeleccionados: { // Para almacenar los filtros seleccionados
+        talla: [],
+        marca: [],
+        color: [],
+        tipo_producto: [],
+        genero: [],
+        precio: null, // Precio se maneja como un objeto { min, max }
+      }
     };
   }
 
@@ -54,31 +68,59 @@ class Filter extends Component {
     this.setState({ precioMin, precioMax });
   };
 
+  // Función para manejar cambios en las opciones de filtro (checkboxes)
+  handleCheckboxChange = (filtroNombre, opcion) => {
+    const { filtrosSeleccionados } = this.state;
+    const nuevosFiltros = { ...filtrosSeleccionados };
+
+    if (filtroNombre === 'PRECIO') {
+      nuevosFiltros.precio = { min: this.state.precioMin, max: this.state.precioMax };
+    } else {
+      if (!nuevosFiltros[filtroNombre]) {
+        nuevosFiltros[filtroNombre] = []; // Aseguramos que siempre sea un array
+      }
+
+      if (nuevosFiltros[filtroNombre].includes(opcion)) {
+        nuevosFiltros[filtroNombre] = nuevosFiltros[filtroNombre].filter(item => item !== opcion);
+      } else {
+        nuevosFiltros[filtroNombre] = [...nuevosFiltros[filtroNombre], opcion];
+      }
+    }
+
+    this.setState({ filtrosSeleccionados: nuevosFiltros });
+  };
+
+  // Función para aplicar los filtros y actualizar la lista de prendas
+  aplicarFiltros = () => {
+    const { filtrosSeleccionados } = this.state;
+    this.props.aplicarFiltros(filtrosSeleccionados); // Llama a la función del padre para aplicar los filtros
+  };
+
   render() {
     return (
-      <div className="filters-container">
-        <div className='filters-title'>Filtros</div>
+      <div className="custom-filters-container">
+        <div className='custom-filters-title'>Filtros</div>
         {/* Mapea sobre los filtros para mostrarlos */}
         {this.state.filtros.map((filtro, index) => (
-          <div key={index} className="filter-section">
+          <div key={index} className="custom-filter-section">
             {/* Título del filtro */}
-            <div className="filter-title" onClick={() => this.toggleFiltro(filtro.nombre)}>
+            <div className="custom-filter-title" onClick={() => this.toggleFiltro(filtro.nombre)}>
               {/* Icono para indicar si el menú está abierto o cerrado */}
-              {this.state.filtrosAbiertos[filtro.nombre] ? <span>▲</span> : <span>▼</span>}
+              {this.state.filtrosAbiertos[filtro.nombre] ? <span>&#9660;</span> : <span>&#9654;</span>}
               {filtro.nombre}
             </div>
 
             {/* Menú desplegable con opciones */}
             {this.state.filtrosAbiertos[filtro.nombre] && (
-              <div className="filter-options">
+              <div className="custom-filter-options">
                 {/* Si es el filtro de PRECIO, muestra el selector de rango */}
                 {filtro.nombre === "PRECIO" && (
-                  <div className="filter-price">
+                  <div className="custom-filter-price">
                     <Slider
                       range
                       min={0}
                       max={100}
-                      defaultValue={[this.state.precioMin, this.state.precioMax]}
+                      value={[this.state.precioMin, this.state.precioMax]}
                       onChange={this.handlePrecioChange}
                     />
                     <span>{this.state.precioMin} - {this.state.precioMax}</span>
@@ -87,8 +129,13 @@ class Filter extends Component {
 
                 {/* Mapea sobre las opciones para mostrarlas */}
                 {filtro.opciones && filtro.opciones.map((opcion, opcionIndex) => (
-                  <div key={opcionIndex} className="filter-option">
-                    <input type="checkbox" id={`filtro-${index}-${opcionIndex}`} />
+                  <div key={opcionIndex} className="custom-filter-option">
+                    <input
+                      type="checkbox"
+                      id={`filtro-${index}-${opcionIndex}`}
+                      onChange={() => this.handleCheckboxChange(filtro.nombre, opcion)}
+                      checked={this.state.filtrosSeleccionados[filtro.nombre]?.includes(opcion) || false}
+                    />
                     <label htmlFor={`filtro-${index}-${opcionIndex}`}>{opcion}</label>
                   </div>
                 ))}
@@ -96,6 +143,9 @@ class Filter extends Component {
             )}
           </div>
         ))}
+
+        {/* Botón para aplicar los filtros */}
+        <button className="aplicar-filtros-button">Aplicar Filtros</button>
       </div>
     );
   }

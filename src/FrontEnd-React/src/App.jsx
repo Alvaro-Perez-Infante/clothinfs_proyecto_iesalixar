@@ -1,5 +1,6 @@
-import React from 'react';
-import {BrowserRouter,Routes,Route} from "react-router-dom";
+import React, { useState } from 'react';
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { CartProvider } from './context/CartContext';
 
 import './App.css';
 
@@ -21,48 +22,66 @@ import Cloth_type_filter from './components/cloth/cloth_type_filter/cloth_type_f
 import BrandClothes from './components/brand/brandClothes/brandClothes';
 import Cloth_details from './components/cloth/cloth_details/cloth_details';
 import Article_details from './components/blog/article_details/article_details';
+import Search_bar from './components/search_bar/search_bar';
+import Filter from "./components/cloth/filter/filter";
 
-class App extends React.Component{
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      variableToChange: false // Variable que quieres cambiar en Index
-    };
-  }
-
-  // Función para cambiar la variable en Index
-  changeVariableInIndex = () => {
-    this.setState({ variableToChange: true });
-  };
-  render(){
+const App = () => {
   return (
-    <>
-      <Navbar/>
+    <CartProvider>
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<CardList/>}/>
-          <Route path="/clothes/:tipo_prenda/" element={<Cloth_type_filter/>}/>
-          <Route path="/clothes-details/:id/" element={<Cloth_details/>}/>
-          <Route path="/login" element={<LoginPage/>}/>
-          <Route path="/register" element={<RegisterPage/>}/>
-          <Route path="/home" element={<Welcome changeVariable={this.changeVariableInIndex}/>}/>
-          <Route path="/about-us" element={<AboutUs/>}/>
-          <Route path="/contact" element={<Contact/>}/>
-          <Route path="/brands" element={<Brand/>}/>
-          <Route path="/brands/:marca/" element={<BrandClothes/>}/>
-          <Route path="/profile" element={<Profile/>}/>
-          <Route path="/blog" element={<Blog/>}/>
-          <Route path="/blog/:id/" element={<Article_details/>}/>
-          <Route path="/sales" element={<Sales/>}/>
-          <Route path="/news" element={<News/>}/>
-          <Route path="/shopping_cart" element={<ShoppingCart/>}/>
-
-        </Routes>
+        <div className="app-container">
+          <Navbar />
+          <MainContent />
+          <Footer />
+        </div>
       </BrowserRouter>
-      <Footer/>
-    </>
-  )
-}
-}
+    </CartProvider>
+  );
+};
+
+const MainContent = () => {
+  const location = useLocation();
+  const [filtrosSeleccionados, setFiltrosSeleccionados] = useState({}); // Estado para almacenar filtros seleccionados
+
+  // Función para aplicar filtros desde el componente Filter
+  const aplicarFiltros = (filtros) => {
+    setFiltrosSeleccionados(filtros);
+  };
+
+  // Determina si se muestra el sidebar
+  const showSidebar =
+    location.pathname === "/" ||
+    location.pathname.startsWith("/clothes") ||
+    location.pathname === "/sales" ||
+    location.pathname === "/news";
+
+  return (
+    <div className="main-content">
+      {showSidebar && <Filter aplicarFiltros={aplicarFiltros} />} {/* Renderiza el componente Filter y le pasa la función aplicarFiltros */}
+      <div className={`content ${showSidebar ? 'with-sidebar' : 'without-sidebar'}`}>
+        <Routes>
+          {/* Componentes renderizados según las rutas */}
+          <Route path="/" element={<CardList filtrosSeleccionados={filtrosSeleccionados} />} /> {/* Pasa filtrosSeleccionados como prop a CardList */}
+          <Route path="/clothes/:tipo_prenda/" element={<Cloth_type_filter />} />
+          <Route path="/clothes-details/:id/" element={<Cloth_details />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/home" element={<Welcome />} />
+          <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/brands" element={<Brand />} />
+          <Route path="/brands/:marca/" element={<BrandClothes />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:id/" element={<Article_details />} />
+          <Route path="/sales" element={<Sales />} />
+          <Route path="/news" element={<News />} />
+          <Route path="/shopping_cart" element={<ShoppingCart />} />
+          <Route path="/search" element={<Search_bar />} />
+        </Routes>
+      </div>
+    </div>
+  );
+};
+
 export default App;

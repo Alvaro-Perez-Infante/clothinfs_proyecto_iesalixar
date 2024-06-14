@@ -1,9 +1,9 @@
 from datetime import timezone
 from django.db import models
 from django_ckeditor_5.fields import CKEditor5Field
+from django.conf import settings
 
-
-error_img_url="https://www.shutterstock.com/image-vector/error-500-page-empty-symbol-260nw-1711106146.jpg"
+error_img_url = "https://www.shutterstock.com/image-vector/error-500-page-empty-symbol-260nw-1711106146.jpg"
 
 class Marca(models.Model):
     nombre = models.CharField(max_length=50)
@@ -41,7 +41,7 @@ class Prenda(models.Model):
     precio_rebajado = models.DecimalField(max_digits=10, decimal_places=2, blank=True, default=0.0)
     fecha_publicacion = models.DateTimeField(auto_now_add=True, auto_now=False)
     tipo_prenda_choices = [
-        ('Sudaderas','Sudaderas'),
+        ('Sudaderas', 'Sudaderas'),
         ('Camisas', 'Camisas'),
         ('Camisetas', 'Camisetas'),
         ('Polos', 'Polos'),
@@ -53,7 +53,6 @@ class Prenda(models.Model):
         ('Calzado', 'Calzado'),
         ('Baño', 'Baño'),
         ('Accesorios', 'Accesorios'),
-
     ]
     tipo_prenda = models.CharField(max_length=50, choices=tipo_prenda_choices, default='Camisetas')
     color_choices = [
@@ -106,12 +105,25 @@ class Noticia(models.Model):
     titulo = models.CharField(max_length=50)
     descripcion_corta = models.CharField(max_length=50)
     autor = models.CharField(max_length=50)
-    fecha=models.DateField('Fecha de Creacion',auto_now=False,auto_now_add=True)
+    fecha = models.DateField('Fecha de Creacion', auto_now=False, auto_now_add=True)
     imagen_url = models.URLField(default=error_img_url)
-    contenido= CKEditor5Field(null=True, blank=True,config_name='extends')
+    contenido = CKEditor5Field(null=True, blank=True, config_name='extends')
 
     def __str__(self):
         return self.titulo
 
 
-                
+class Cart(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    items = models.ManyToManyField('Prenda', through='CartItem')
+
+    def __str__(self):
+        return f'Cart for {self.user.username}'
+
+class CartItem(models.Model):
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
+    prenda = models.ForeignKey('Prenda', on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=1)
+
+    def __str__(self):
+        return f'{self.quantity} of {self.prenda.tipo_prenda} in cart {self.cart.id}'

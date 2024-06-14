@@ -1,3 +1,4 @@
+// Article_details.js
 import React, { Component } from 'react';
 import './article_details.css';
 import { BASE_API_URL } from "../../../constants";
@@ -53,14 +54,17 @@ export default class Article_details extends Component {
     }
 
     return (
-      <div className="article-details">
-        <div className="article-info">
-          <h2>{article.titulo}</h2>
-          <p><strong>Autor:</strong> {article.autor}</p>
-          <p><strong>Fecha:</strong> {new Date(article.fecha).toLocaleDateString()}</p>
-          <p><strong>Descripción corta:</strong> {article.descripcion_corta}</p>
-          <div className="article-content" dangerouslySetInnerHTML={{ __html: article.contenido }} />
+      <div className="article-details-container">
+        <div className="article-details-header">
+          <h1 className="article-details-title">{article.titulo}</h1>
+          <p className="article-details-meta">
+            <span className="article-details-author">Escrito por: {article.autor}</span>
+            <span className="article-details-date">{new Date(article.fecha).toLocaleDateString()}</span>
+            <span className="article-details-time">Tiempo de lectura: {article.tiempo_lectura} min</span>
+          </p>
+          <img src={article.imagen_url} alt={article.titulo} className="article-details-image" />
         </div>
+        <div className="article-details-content" dangerouslySetInnerHTML={{ __html: article.contenido }} />
       </div>
     );
   }

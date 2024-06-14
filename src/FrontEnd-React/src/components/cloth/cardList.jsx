@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import './cardList.css';
-import Filter from './filter/filter';
 import { BASE_API_URL } from "../../constants";
-import CreateAdmin from '../admin/admin';
 
 export default class CardList extends Component {
   constructor(props) {
@@ -15,13 +13,40 @@ export default class CardList extends Component {
       itemsPerPage: 8,
     };
   }
+
   handleCardClick = (id) => {
     window.location.href = `/clothes-details/${id}`;
   }
 
   componentDidMount() {
+    this.fetchPrendas(); // Cargar las prendas al montar el componente
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    // Si los filtros seleccionados cambian, volver a cargar las prendas
+    if (prevProps.filtrosSeleccionados !== this.props.filtrosSeleccionados) {
+      this.fetchPrendas();
+    }
+  }
+
+  fetchPrendas = () => {
     this.setState({ isLoading: true });
-    fetch(`${BASE_API_URL}/api/clothes/`)
+    const { filtrosSeleccionados } = this.props;
+
+    let apiUrl = `${BASE_API_URL}/api/clothes/`;
+
+    // Aplicar filtros si hay alguno seleccionado
+    if (filtrosSeleccionados && Object.keys(filtrosSeleccionados).length > 0) {
+      apiUrl += `?`;
+      for (const filtro in filtrosSeleccionados) {
+        if (filtrosSeleccionados[filtro].length > 0) {
+          apiUrl += `${filtro}=${filtrosSeleccionados[filtro].join(",")}&`;
+        }
+      }
+      apiUrl = apiUrl.slice(0, -1); // Eliminar el último "&"
+    }
+
+    fetch(apiUrl)
       .then(response => {
         if (response.ok) {
           return response.json();
@@ -30,7 +55,6 @@ export default class CardList extends Component {
         }
       })
       .then(data => {
-        console.log('Fetched data:', data); // Log the data to inspect its structure
         if (Array.isArray(data)) {
           this.setState({ prendas: data, isLoading: false });
         } else {
@@ -40,26 +64,16 @@ export default class CardList extends Component {
       .catch(error => this.setState({ error, isLoading: false }));
   }
 
-  render() {
-    console.log(BASE_API_URL)
+  handlePageChange = (pageNumber) => {
+    this.setState({ currentPage: pageNumber });
+  }
 
+  render() {
     const { prendas, isLoading, error, currentPage, itemsPerPage } = this.state;
 
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentItems = prendas.slice(indexOfFirstItem, indexOfLastItem);
-
-    const nextPage = () => {
-      if (currentPage < Math.ceil(prendas.length / itemsPerPage)) {
-        this.setState({ currentPage: currentPage + 1 });
-      }
-    };
-
-    const prevPage = () => {
-      if (currentPage > 1) {
-        this.setState({ currentPage: currentPage - 1 });
-      }
-    };
 
     if (isLoading) {
       return <div>Loading...</div>;
@@ -70,31 +84,29 @@ export default class CardList extends Component {
     }
 
     return (
-      <div className='MainCardList'>
+      <div className='main-card-list'>
         <div className="card-list">
-          <div>
-            <Filter/>
-          </div>
           {currentItems.map(prenda => (
             <div className="card" key={prenda.id} onClick={() => this.handleCardClick(prenda.id)}>
               <img src={prenda.imagen_url} alt={prenda.nombre} className="card-image" />
               <div className="card-content">
                 <div className="card-details">
+                  <div className="card-title">{prenda.nombre}</div>
                   <div><strong>Tipo Prenda:</strong> {prenda.tipo_prenda}</div>
                   <div><strong>Marca:</strong> {prenda.marca.nombre}</div>
                   <div><strong>Género:</strong> {prenda.genero}</div>
-                  <div><strong>Precio:</strong> {prenda.precio_original}€</div>
+                  <div className="card-price"><strong>Precio:</strong> {prenda.precio_original}€</div>
                 </div>
               </div>
             </div>
           ))}
         </div>
         <div className="pagination">
-          <button onClick={prevPage} disabled={currentPage === 1}>Anterior</button>
+          <button onClick={() => this.handlePageChange(currentPage - 1)} disabled={currentPage === 1}>Anterior</button>
           <span>{` Página ${currentPage} de ${Math.ceil(prendas.length / itemsPerPage)} `}</span>
-          <button onClick={nextPage} disabled={currentPage === Math.ceil(prendas.length / itemsPerPage)}>Siguiente</button>
+          <button onClick={() => this.handlePageChange(currentPage + 1)} disabled={currentPage === Math.ceil(prendas.length / itemsPerPage)}>Siguiente</button>
         </div>
-        {/*<CreateAdmin/>*/}
+        <br />
       </div>
     );
   }

@@ -1,10 +1,11 @@
 from django.contrib import admin
-from django.urls import path,include
+from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from Auth.views import *
 from ClothApp.views import *
-from rest_framework.documentation  import include_docs_urls
+from rest_framework.documentation import include_docs_urls
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     #path('api/create-admin/', create_admin_user, name='create-admin'),
@@ -12,7 +13,6 @@ urlpatterns = [
 
     path('api/users/register/', UserCreateView.as_view(), name='user-create'),
     path('api/users/login/', UserLoginView.as_view(), name='user-login'),
-    
     
     path('api/clothes/', PrendaCreateView.as_view(), name='prenda-create-list'),
     path('api/clothes-details/<int:id>/', PrendaRetrieveView.as_view(), name='prenda-detail'),
@@ -26,9 +26,14 @@ urlpatterns = [
     path('api/news/', NoticiaCreateView.as_view(), name='noticia-create-list'),
     path('api/news/<int:id>/', NoticiaRetrieveView.as_view(), name='noticia-detail'),
     
-    path('api/contact/',EmailAPIView.as_view(), name='contact-us'),
+    path('api/contact/', EmailAPIView.as_view(), name='contact-us'),
 
-    #CKEDITOR
-    path("ckeditor5/",include("django_ckeditor_5.urls"))
-    #CKEDITOR   
-]
+    # Rutas del carrito de la compra
+    path('api/cart/', CartView.as_view(), name='cart-view'),
+    path('api/cart/add/<int:prenda_id>/', AddToCartView.as_view(), name='add-to-cart'),
+    path('api/cart/remove/<int:cart_item_id>/', RemoveFromCartView.as_view(), name='remove-from-cart'),
+    path('api/cart/checkout/', CheckoutView.as_view(), name='checkout'),
+
+    # CKEDITOR
+    path("ckeditor5/", include("django_ckeditor_5.urls"))
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

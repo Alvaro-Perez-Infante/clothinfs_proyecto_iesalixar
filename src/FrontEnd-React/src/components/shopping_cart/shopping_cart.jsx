@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import './shopping_cart.css';
 
 export default class ShoppingCart extends Component {
@@ -10,26 +11,56 @@ export default class ShoppingCart extends Component {
     };
   }
 
-  // Método para agregar un artículo al carrito
-  addToCart = (item) => {
-    this.setState((prevState) => ({
-      items: [...prevState.items, item],
-      total: prevState.total + item.price,
-    }));
+  componentDidMount() {
+    this.fetchCart();
+  }
+
+  // Método para obtener los datos del carrito desde el backend
+  fetchCart = async () => {
+    try {
+      const response = await axios.get('/api/cart/');
+      const cart = response.data;
+      this.setState({
+        items: cart.items,
+        total: cart.items.reduce((sum, item) => sum + item.prenda.precio_rebajado * item.quantity, 0),
+      });
+    } catch (error) {
+      console.error('Error fetching cart data:', error);
+    }
   };
 
-  // Método para enviar la información del carrito por correo electrónico
-  sendEmail = () => {
-    const { items, total } = this.state;
+  // Método para agregar un artículo al carrito
+  addToCart = async (prendaId) => {
+    try {
+      await axios.post(`/api/cart/add/${prendaId}/`);
+      this.fetchCart(); // Actualizar el carrito después de añadir el artículo
+    } catch (error) {
+      console.error('Error adding to cart:', error);
+    }
+  };
 
-    // Aquí deberías implementar la lógica para enviar el correo electrónico
-    // Por ejemplo, usando una API de servidor para enviar el correo electrónico con la información del carrito
+  // Método para eliminar un artículo del carrito
+  removeFromCart = async (cartItemId) => {
+    try {
+      await axios.post(`/api/cart/remove/${cartItemId}/`);
+      this.fetchCart(); // Actualizar el carrito después de eliminar el artículo
+    } catch (error) {
+      console.error('Error removing from cart:', error);
+    }
+  };
 
-    // Una vez enviado el correo, puedes limpiar el carrito
-    this.setState({
-      items: [],
-      total: 0,
-    });
+  // Método para procesar el checkout
+  checkout = async () => {
+    try {
+      await axios.post('/api/cart/checkout/');
+      this.setState({
+        items: [],
+        total: 0,
+      });
+      alert('Compra realizada con éxito. Se ha enviado un correo con los detalles.');
+    } catch (error) {
+      console.error('Error during checkout:', error);
+    }
   };
 
   render() {
@@ -47,8 +78,10 @@ export default class ShoppingCart extends Component {
           ) : (
             items.map((item, index) => (
               <div key={index} className="cart-item-shop">
-                <span className="item-name-shop">{item.name}</span>
-                <span className="item-price-shop">${item.price}</span>
+                <span className="item-name-shop">{item.prenda.tipo_prenda} - {item.prenda.marca.nombre}</span>
+                <span className="item-price-shop">${item.prenda.precio_rebajado}</span>
+                <span className="item-quantity-shop">Cantidad: {item.quantity}</span>
+                <button onClick={() => this.removeFromCart(item.id)}>Eliminar</button>
               </div>
             ))
           )}
@@ -58,7 +91,7 @@ export default class ShoppingCart extends Component {
             <strong>Total:</strong> ${total}
           </div>
         )}
-        <button className="buy-button-shop" onClick={this.sendEmail}>COMPRAR PRODUCTOS</button>
+        <button className="buy-button-shop" onClick={this.checkout}>COMPRAR PRODUCTOS</button>
       </div>
     );
   }

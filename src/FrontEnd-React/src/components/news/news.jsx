@@ -30,28 +30,31 @@ export default class News extends Component {
       })
       .catch(error => this.setState({ error, isLoading: false }));
   }
+
   handleCardClick = (id) => {
     window.location.href = `/clothes-details/${id}`;
   }
+
+  nextPage = () => {
+    const { currentPage, itemsPerPage, novedades } = this.state;
+    if (currentPage < Math.ceil(novedades.length / itemsPerPage)) {
+      this.setState({ currentPage: currentPage + 1 });
+    }
+  };
+
+  prevPage = () => {
+    const { currentPage } = this.state;
+    if (currentPage > 1) {
+      this.setState({ currentPage: currentPage - 1 });
+    }
+  };
+
   render() {
-    const { novedades, isLoading, error  ,currentPage, itemsPerPage } = this.state;
-    
+    const { novedades, isLoading, error, currentPage, itemsPerPage } = this.state;
+
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentItems = novedades.slice(indexOfFirstItem, indexOfLastItem);
-
-    const nextPage = () => {
-      if (currentPage < Math.ceil(novedades.length / itemsPerPage)) {
-        this.setState({ currentPage: currentPage + 1 });
-      }
-    };
-
-    const prevPage = () => {
-      if (currentPage > 1) {
-        this.setState({ currentPage: currentPage - 1 });
-      }
-    };
-
 
     if (isLoading) {
       return <div>Loading...</div>;
@@ -62,22 +65,25 @@ export default class News extends Component {
     }
 
     return (
-      <div className="news-container">
-        {currentItems.map(novedad => (
-          <div className="news-card" key={novedad.id} onClick={() => this.handleCardClick(novedad.id)}>
-            <img src={novedad.imagen_url} alt={novedad.titulo} className="news-image" />
-            <div className="news-content">
-              <h2 className="news-title">{novedad.marca.nombre}</h2>
-              <p className="news-type">{novedad.tipo_prenda}</p>
-              <p className="news-genre">{novedad.genero}</p>
+      <div className="news">
+        <div className="card-list">
+          {currentItems.map(novedad => (
+            <div className="card" key={novedad.id} onClick={() => this.handleCardClick(novedad.id)}>
+              <img src={novedad.imagen_url} alt={novedad.titulo} className="card-image" />
+              <div className="card-content">
+                <h3>{novedad.marca.nombre}</h3>
+                <div>
+                  <p className="news-type">{novedad.tipo_prenda}</p>
+                  <p className="news-genre">{novedad.genero}</p>
+                </div>
+              </div>
             </div>
-          </div>
-        ))}
-
+          ))}
+        </div>
         <div className="pagination">
-          <button onClick={prevPage} disabled={currentPage === 1}>Anterior</button>
+          <button onClick={this.prevPage} disabled={currentPage === 1}>Anterior</button>
           <span>{` Página ${currentPage} de ${Math.ceil(novedades.length / itemsPerPage)} `}</span>
-          <button onClick={nextPage} disabled={currentPage === Math.ceil(novedades.length / itemsPerPage)}>Siguiente</button>
+          <button onClick={this.nextPage} disabled={currentPage === Math.ceil(novedades.length / itemsPerPage)}>Siguiente</button>
         </div>
       </div>
     );

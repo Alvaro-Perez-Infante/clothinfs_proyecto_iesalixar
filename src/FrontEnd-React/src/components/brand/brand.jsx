@@ -45,7 +45,6 @@ export default class Brand extends Component {
 
     return (
       <div className="brand">
-        <h1>Selecciona una Marca</h1>
         <div className="card-list">
           {marcas.map((marca, index) => (
             <div

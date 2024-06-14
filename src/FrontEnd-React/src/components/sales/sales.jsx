@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import './sales.css'
+import './sales.css';
 import { BASE_API_URL } from "../../constants";
-
 
 export default class Sales extends Component {
   constructor(props) {
     super(props);
     this.state = {
       sales: [],
+      filteredSales: [],
       isLoading: false,
       error: null,
       currentPage: 1,
@@ -26,31 +26,38 @@ export default class Sales extends Component {
         }
       })
       .then(data => {
-        this.setState({ sales: data, isLoading: false });
+        // Filtrar las prendas con precio_rebajado > 0.00€
+        const filteredSales = data.filter(sale => parseFloat(sale.precio_rebajado) > 0.00);
+        this.setState({ sales: data, filteredSales: filteredSales, isLoading: false });
       })
       .catch(error => this.setState({ error, isLoading: false }));
-  }
+  }  
+
   handleCardClick = (id) => {
     window.location.href = `/clothes-details/${id}`;
-  }
+  };
+
+  nextPage = () => {
+    const { currentPage, itemsPerPage, filteredSales } = this.state;
+    if (currentPage < Math.ceil(filteredSales.length / itemsPerPage)) {
+      this.setState({ currentPage: currentPage + 1 });
+    }
+  };
+
+  prevPage = () => {
+    const { currentPage } = this.state;
+    if (currentPage > 1) {
+      this.setState({ currentPage: currentPage - 1 });
+    }
+  };
+
   render() {
-    const { sales, isLoading, error,currentPage, itemsPerPage  } = this.state;
+    const { filteredSales, isLoading, error, currentPage, itemsPerPage } = this.state;
 
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentItems = sales.slice(indexOfFirstItem, indexOfLastItem);
+    const currentItems = filteredSales.slice(indexOfFirstItem, indexOfLastItem);
 
-    const nextPage = () => {
-      if (currentPage < Math.ceil(prendas.length / itemsPerPage)) {
-        this.setState({ currentPage: currentPage + 1 });
-      }
-    };
-
-    const prevPage = () => {
-      if (currentPage > 1) {
-        this.setState({ currentPage: currentPage - 1 });
-      }
-    };
     if (isLoading) {
       return <div>Loading...</div>;
     }
@@ -61,9 +68,8 @@ export default class Sales extends Component {
 
     return (
       <div className="sales">
-        <h1>Ofertas</h1>
         <div className="card-list">
-          {sales.map(sale => (
+          {currentItems.map(sale => (
             <div className="card" key={sale.id} onClick={() => this.handleCardClick(sale.id)}>
               <img src={sale.imagen_url} alt={sale.descripcion} className="card-image" />
               <div className="card-content">
@@ -78,9 +84,9 @@ export default class Sales extends Component {
           ))}
         </div>
         <div className="pagination">
-          <button onClick={prevPage} disabled={currentPage === 1}>Anterior</button>
-          <span>{` Página ${currentPage} de ${Math.ceil(sales.length / itemsPerPage)} `}</span>
-          <button onClick={nextPage} disabled={currentPage === Math.ceil(sales.length / itemsPerPage)}>Siguiente</button>
+          <button onClick={this.prevPage} disabled={currentPage === 1}>Anterior</button>
+          <span>{` Página ${currentPage} de ${Math.ceil(filteredSales.length / itemsPerPage)} `}</span>
+          <button onClick={this.nextPage} disabled={currentPage === Math.ceil(filteredSales.length / itemsPerPage)}>Siguiente</button>
         </div>
       </div>
     );
