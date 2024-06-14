@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Navbar from "../index/navbar/navbar";
+import Navbar from "../navbar/navbar";
 import Filter from "../cloth/filter/filter";
 
 export class Welcome extends React.Component {

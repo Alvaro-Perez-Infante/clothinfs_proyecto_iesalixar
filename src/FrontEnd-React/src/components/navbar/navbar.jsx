@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import "./navbar.css";
-import BagIcon from "../../../assets/BagIcon"; // Importa el componente BagIcon
-import PersonIcon from "../../../assets/PersonIcon"; // Importa el componente PersonIcon
-import SearchIcon from "../../../assets/SearchIcon"; // Importa el componente SearchIcon
+import BagIcon from "../../assets/BagIcon"; // Importa el componente BagIcon
+import PersonIcon from "../../assets/PersonIcon"; // Importa el componente PersonIcon
+import SearchIcon from "../../assets/SearchIcon"; // Importa el componente SearchIcon
 
 
 const navbarDesplegable = "/navbarDesplegable.png";

@@ -5,14 +5,19 @@ from django.conf.urls.static import static
 from Auth.views import *
 from ClothApp.views import *
 from rest_framework.documentation import include_docs_urls
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     #path('api/create-admin/', create_admin_user, name='create-admin'),
     path('docs/', include_docs_urls(title="API")),
 
-    path('api/users/register/', UserCreateView.as_view(), name='user-create'),
-    path('api/users/login/', UserLoginView.as_view(), name='user-login'),
+    #Auth
+    path("api/user/register/", CreateUserView.as_view(), name="register"),
+    path("api/token/", TokenObtainPairView.as_view(), name="get_token"),
+    path("api/token/refresh/", TokenRefreshView.as_view(), name="refresh"),
+    path("api-auth/", include("rest_framework.urls")),
+    #Auth
     
     path('api/clothes/', PrendaCreateView.as_view(), name='prenda-create-list'),
     path('api/clothes-details/<int:id>/', PrendaRetrieveView.as_view(), name='prenda-detail'),

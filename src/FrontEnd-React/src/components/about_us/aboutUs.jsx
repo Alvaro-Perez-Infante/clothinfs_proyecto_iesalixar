@@ -38,7 +38,7 @@ export default class AboutUs extends React.Component {
           <img src="/aboutUs/2.2.png" alt="About Us 2.2" />
           <img src="/aboutUs/2.3.png" alt="About Us 2.3" />
         </div>
-        <div class="text-block-history">
+        <div className="text-block-history">
           <h1>NUESTRA HISTORIA</h1>
           <p>
             Mucho antes de que naciera ClothInfs, el emprendedor Álvaro Pérez,

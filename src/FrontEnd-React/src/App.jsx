@@ -1,16 +1,13 @@
 import React, { useState } from 'react';
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation,Navigate } from "react-router-dom";
 import { CartProvider } from './context/CartContext';
-
 import './App.css';
-
 import Welcome from './components/welcome/welcome';
-import LoginPage from './components/index/login_page/LoginPage';
-import RegisterPage from './components/index/register_page/RegisterPage';
+
 import AboutUs from './components/about_us/aboutUs';
 import Contact from './components/contact/contact';
 import Brand from './components/brand/brand';
-import Navbar from './components/index/navbar/navbar';
+import Navbar from './components/navbar/navbar';
 import CardList from './components/cloth/cardList';
 import Profile from './components/profile/profile';
 import Footer from './components/footer/footer';
@@ -24,6 +21,22 @@ import Cloth_details from './components/cloth/cloth_details/cloth_details';
 import Article_details from './components/blog/article_details/article_details';
 import Search_bar from './components/search_bar/search_bar';
 import Filter from "./components/cloth/filter/filter";
+import NotFound from "./components/Auth/Error/NotFound";
+import Login from './components/Auth/Login/Login';
+import Register from './components/Auth/Register/Register';
+
+
+
+
+function Logout() {
+  localStorage.clear()
+  return <Navigate to="/login" />
+}
+
+function RegisterAndLogout() {
+  localStorage.clear()
+  return <Register/>
+}
 
 const App = () => {
   return (
@@ -64,8 +77,11 @@ const MainContent = () => {
           <Route path="/" element={<CardList filtrosSeleccionados={filtrosSeleccionados} />} /> {/* Pasa filtrosSeleccionados como prop a CardList */}
           <Route path="/clothes/:tipo_prenda/" element={<Cloth_type_filter />} />
           <Route path="/clothes-details/:id/" element={<Cloth_details />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
+
+          <Route path="/login" element={<Login/>} />
+          <Route path="/logout" element={<Logout />} />
+          <Route path="/register" element={<RegisterAndLogout />} />
+
           <Route path="/home" element={<Welcome />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/contact" element={<Contact />} />
@@ -78,6 +94,7 @@ const MainContent = () => {
           <Route path="/news" element={<News />} />
           <Route path="/shopping_cart" element={<ShoppingCart />} />
           <Route path="/search" element={<Search_bar />} />
+          <Route path="*" element={<NotFound/>}></Route>
         </Routes>
       </div>
     </div>
