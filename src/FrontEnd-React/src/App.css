@@ -158,25 +158,31 @@ body, html, #root {
   margin: 30px 0; /* Ajusta el margen superior e inferior según sea necesario */
 }
 
-.pagination-button {
-  min-width: 35px;
-  min-height: 35px;
-  margin: 0 5px;
-  padding: 5px 10px;
-  font-size: 14px;
-  text-align: center;
-  background-color: #000000;
-  color: white;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
 
-.pagination-button:hover {
-  background-color: #3f3f3f;
-}
 
 .pagination-button.active {
   background-color: #000000;
   font-weight: bold;
+}
+
+.pagination-button {
+  margin-top: 20px;
+  margin-bottom: 50px; /* Margen inferior para separación del footer */
+  text-align: center;
+}
+
+.pagination-button button {
+  padding: 10px 20px; /* Ajusta el padding según sea necesario */
+  margin: 0 5px; /* Espacio entre los botones */
+  font-size: 16px; /* Tamaño de la fuente */
+  background-color: #000; /* Color de fondo del botón */
+  color: #fff; /* Color del texto del botón */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pagination-button button:hover {
+  background-color: #555; /* Color de fondo al pasar el cursor */
 }

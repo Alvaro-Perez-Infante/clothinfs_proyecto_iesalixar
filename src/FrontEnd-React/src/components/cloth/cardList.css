@@ -146,18 +146,23 @@ body, html, #root {
   background-color: #555;
 }
 
-.pagination {
+.paginationcard {
   margin-top: 20px;
   margin-bottom: 50px; /* Margen inferior para separación del footer */
   text-align: center;
 }
 
-.pagination button {
-  padding: 5px 10px; /* Ajusta el padding según sea necesario */
+.paginationcard button {
+  padding: 10px 20px; /* Ajusta el padding según sea necesario */
   margin: 0 5px; /* Espacio entre los botones */
-  font-size: 14px; /* Tamaño de la fuente */
+  font-size: 16px; /* Tamaño de la fuente */
+  background-color: #000000; /* Color de fondo del botón */
+  color: #fff; /* Color del texto del botón */
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.pagination span {
-  font-size: 14px; /* Tamaño de la fuente */
+.paginationcard button:hover {
+  background-color: #555; /* Color de fondo al pasar el cursor */
 }

@@ -63,3 +63,38 @@
 .aplicar-filtros-button{
   width: 110px;
 }
+
+.card-button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-top: 10px;
+  font-size: 16px;
+  text-align: center;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.card-button:hover {
+  background-color: #555;
+}
+
+.filterbutton {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #000000;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  width: 60%;
+  height: 4%;
+  margin-bottom: 150px;
+  margin-left: 50px;
+}
+
+.filterbutton:hover {
+  background-color: #6d6d6d;
+}

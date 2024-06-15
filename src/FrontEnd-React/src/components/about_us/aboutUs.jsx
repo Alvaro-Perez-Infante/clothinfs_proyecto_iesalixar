@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import "./aboutUs.css";
 
-export default class AboutUs extends React.Component {
+export default class AboutUs extends Component {
   render() {
     return (
-      <div>
-        <div>
-          <img src="/aboutUs/1.png" alt="About Us 1" />
+      <div className="aboutus-page-container">
+        <div className="aboutus-image-container">
+          <img src="/aboutUs/1.png" alt="About Us 1" className="aboutus-image"/>
         </div>
-        <div className="text-container">
-          <div className="text-block">
+        <div className="aboutus-text-container">
+          <div className="aboutus-text-block">
             <h1>LA MODA COMO FORMA DE EXPRESIÓN</h1>
             <p>
               <strong>
@@ -33,12 +33,12 @@ export default class AboutUs extends React.Component {
             </p>
           </div>
         </div>
-        <div className="image-row">
-          <img src="/aboutUs/2.1.png" alt="About Us 2.1" />
-          <img src="/aboutUs/2.2.png" alt="About Us 2.2" />
-          <img src="/aboutUs/2.3.png" alt="About Us 2.3" />
+        <div className="aboutus-image-row">
+          <img src="/aboutUs/2.1.png" alt="About Us 2.1" className="aboutus-row-image"/>
+          <img src="/aboutUs/2.2.png" alt="About Us 2.2" className="aboutus-row-image"/>
+          <img src="/aboutUs/2.3.png" alt="About Us 2.3" className="aboutus-row-image"/>
         </div>
-        <div className="text-block-history">
+        <div className="aboutus-text-block-history">
           <h1>NUESTRA HISTORIA</h1>
           <p>
             Mucho antes de que naciera ClothInfs, el emprendedor Álvaro Pérez,
@@ -75,13 +75,13 @@ export default class AboutUs extends React.Component {
             la moda del futuro.
           </p>
         </div>
-        <div className="image-row">
-          <img src="/aboutUs/3.1.png" alt="About Us 3.1" />
-          <img src="/aboutUs/3.2.png" alt="About Us 3.2" />
-          <img src="/aboutUs/3.3.png" alt="About Us 3.3" />
+        <div className="aboutus-image-row">
+          <img src="/aboutUs/3.1.png" alt="About Us 3.1" className="aboutus-row-image"/>
+          <img src="/aboutUs/3.2.png" alt="About Us 3.2" className="aboutus-row-image"/>
+          <img src="/aboutUs/3.3.png" alt="About Us 3.3" className="aboutus-row-image"/>
         </div>
-        <div className="text-container">
-          <div className="text-block">
+        <div className="aboutus-text-container">
+          <div className="aboutus-text-block">
             <p>
               <strong>Estamos en constante actualización, ¿Para qué?</strong>
             </p>

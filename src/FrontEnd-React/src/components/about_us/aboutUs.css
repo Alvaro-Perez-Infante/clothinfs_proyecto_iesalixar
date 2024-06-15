@@ -5,59 +5,69 @@ body {
   font-family: 'Lato', sans-serif;
 }
 
-.about-container {
-  max-width: 800px;
+.aboutus-page-container {
+  max-width: 8000px;
   margin: 0 auto;
 }
 
-.about-container img {
+.aboutus-page-container img {
   max-width: 100%;
   height: auto;
 }
 
-.image-row {
+.aboutus-image-container img {
+  width: 100%;
+  height: auto;
+}
+
+.aboutus-image-row {
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
 }
 
-.about-container p {
-  margin-bottom: 20px; /* Añade margen inferior para separación entre párrafos */
+.aboutus-row-image {
+  width: 32%;
 }
 
-.about-container strong {
+.aboutus-page-container p {
+  margin-bottom: 20px;
+}
+
+.aboutus-page-container strong {
   font-weight: bold;
 }
 
-.about-container ol {
-  margin-bottom: 20px; /* Añade margen inferior para separación entre lista y párrafos */
+.aboutus-page-container ol {
+  margin-bottom: 20px;
   margin-left: 20px;
   text-align: left;
 }
 
-.about-container div {
+.aboutus-page-container div {
   margin-bottom: 30px;
 }
 
-.about-container div:last-child {
+.aboutus-page-container div:last-child {
   margin-bottom: 0;
 }
 
-.text-container {
+.aboutus-text-container {
   text-align: center;
 }
 
-.text-block {
+.aboutus-text-block {
   display: inline-block;
   text-align: left;
   max-width: 800px;
-  margin-top: 50px;
+  margin-top: 0px;
   margin-bottom: 50px;
 }
 
-.text-block-history {
-  max-width: 1700px;
+.aboutus-text-block-history {
+  max-width: 800px;
   margin-top: 50px;
   margin-bottom: 50px;
-  margin-left: 100px;
+  margin-left: 530px;
+  text-align: center;
 }

@@ -145,7 +145,7 @@ class Filter extends Component {
         ))}
 
         {/* Botón para aplicar los filtros */}
-        <button className="aplicar-filtros-button">Aplicar Filtros</button>
+        <button className="filterbutton">Aplicar Filtros</button>
       </div>
     );
   }

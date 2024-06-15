@@ -169,21 +169,20 @@
 }
 
 .logout-button {
-  width: 80px;
-  height: 45px;
-  margin-top: 10px;
-  margin-left: 40px;
-  padding: 8px 16px; /* Ajusta el padding para el tamaño del botón */
-  font-size: 12px; /* Tamaño de fuente */
-  background-color: #000000; /* Color de fondo del botón */
-  border: 1px solid #cccccc; /* Borde del botón */
-  cursor: pointer; /* Cambia el cursor al pasar por encima */
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Sombra ligera */
-  transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Transiciones suaves */
+  width: 120px; /* Ancho ajustado para el botón */
+  height: 40px; /* Altura ajustada para el botón */
+  margin-top: 10px; /* Margen superior */
+  padding: 8px 16px; /* Ajuste del padding */
+  font-size: 14px; /* Tamaño de la fuente */
+  background-color: #000; /* Color de fondo */
+  color: #fff; /* Color del texto */
+  border: none; /* Sin borde */
+  cursor: pointer; /* Cursor apuntador */
+  transition: background-color 0.3s, color 0.3s; /* Transiciones suaves */
 }
 
 .logout-button:hover {
-  background-color: #000000; /* Cambio de color de fondo al pasar el ratón */
+  background-color: #555; /* Cambio de color de fondo al pasar el ratón */
 }
 
 .logout-button:focus {
@@ -191,20 +190,20 @@
 }
 
 .logout-menu {
-  position: absolute;
-  top: 30px; /* Ajusta la distancia desde la parte superior */
-  right: 0; /* Ajusta la posición a la derecha */
-  z-index: 1000; /* Asegura que esté por encima de otros elementos */
-  padding: 8px; /* Añade espacio interno */
+  position: absolute; /* Posicionamiento absoluto */
+  top: 30px; /* Distancia desde la parte superior */
+  right: 0; /* Alineación a la derecha */
+  z-index: 1000; /* Índice z alto para superponer sobre otros elementos */
+  padding: 8px; /* Espaciado interno */
   min-width: 120px; /* Ancho mínimo del menú */
+  display: none; /* Inicialmente oculto */
 }
 
-.username-container {
-  position: relative; /* Para posicionar correctamente el menú */
-  display: inline-block; /* Para que ocupe solo el espacio necesario */
+.username-container:hover .logout-menu {
+  display: block; /* Mostrar el menú al pasar el ratón sobre el contenedor del username */
 }
 
 .username-container p {
-  cursor: pointer; /* Cambia el cursor al pasar por encima del nombre de usuario */
+  cursor: pointer; /* Cambio de cursor al pasar por encima */
 }
 

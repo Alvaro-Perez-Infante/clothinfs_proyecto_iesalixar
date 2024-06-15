@@ -1,20 +1,20 @@
-.contact-container {
+.contact-page-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 40px;
 }
 
-.form-container-title {
+.contact-form-title {
   width: 100%;
-  max-width: 600px;
+  max-width: 800px;
   text-align: center;
   margin-bottom: 20px;
 }
 
-.form-container {
+.contact-form-container {
   width: 100%;
-  max-width: 650px;
+  max-width: 800px;
   text-align: left;
   margin-bottom: 20px;
 }
@@ -24,7 +24,7 @@
 }
 
 .contact-description a {
-  color: #000000;
+  color: #585858;
   text-decoration: underline;
   font-weight: bold;
 }
@@ -33,7 +33,7 @@
   text-decoration: underline;
 }
 
-.form-group {
+.contact-form-group {
   margin-bottom: 20px;
   text-align: left;
 }
@@ -49,30 +49,24 @@ label span {
   font-weight: bold;
 }
 
-input[type="text"],
-textarea,
-button {
+.contact-input {
+  width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
   margin: 0 auto;
   border-radius: 0;
-  box-sizing: border-box; /* Incluir el padding y border en el cálculo del ancho */
+  box-sizing: border-box;
 }
 
-input[type="text"]#asunto {
-  width: calc(100% - -336px); /* Ajustar el ancho del input de Asunto */
-}
-
-
-.button-container {
+.contact-button-container {
   width: 100%;
   text-align: center;
   margin: 20px auto;
   margin-bottom: 60px;
 }
 
-button {
-  width: 212%;
+.contact-button {
+  width: 100%;
   padding: 10px;
   background-color: #000;
   color: #fff;
@@ -86,22 +80,22 @@ button {
   text-align: center;
 }
 
-button:hover {
+.contact-button:hover {
   background-color: #333;
 }
 
-.clothinfs-info {
+.contact-info {
   width: 100%;
   max-width: 1200px;
   text-align: center;
 }
 
-.clothinfs-info h3 {
+.contact-info h3 {
   margin-bottom: 60px;
   font-weight: bold;
 }
 
-.clothinfs-info p {
+.contact-info p {
   margin-top: -20px;
   line-height: 1.6;
 }

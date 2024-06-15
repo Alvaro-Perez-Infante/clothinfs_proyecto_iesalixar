@@ -101,7 +101,7 @@ export default class CardList extends Component {
             </div>
           ))}
         </div>
-        <div className="pagination">
+        <div className="paginationcard">
           <button onClick={() => this.handlePageChange(currentPage - 1)} disabled={currentPage === 1}>Anterior</button>
           <span>{` Página ${currentPage} de ${Math.ceil(prendas.length / itemsPerPage)} `}</span>
           <button onClick={() => this.handlePageChange(currentPage + 1)} disabled={currentPage === Math.ceil(prendas.length / itemsPerPage)}>Siguiente</button>

@@ -48,11 +48,11 @@ export default class Contact extends Component {
     const { asunto, mensaje } = this.state;
 
     return (
-      <div className="contact-container">
-        <div className="form-container-title">
+      <div className="contact-page-container">
+        <div className="contact-form-title">
           <h2>Formulario de Contacto</h2>
         </div>
-        <div className="form-container">
+        <div className="contact-form-container">
           <p className="contact-description">
             Si tienes alguna duda, queja, sugerencia o simplemente deseas
             cambiar o devolver alguna prenda de ClothInfs, puedes enviar un
@@ -75,7 +75,7 @@ export default class Contact extends Component {
             laborables.
           </p>
           <form onSubmit={this.handleSubmit}>
-            <div className="form-group">
+            <div className="contact-form-group">
               <label htmlFor="asunto">
                 <span>Asunto:</span>
                 <input
@@ -84,10 +84,11 @@ export default class Contact extends Component {
                   name="asunto"
                   value={asunto}
                   onChange={this.handleChange}
+                  className="contact-input"
                 />
               </label>
             </div>
-            <div className="form-group">
+            <div className="contact-form-group">
               <label htmlFor="mensaje">
                 <span>Mensaje:</span>
                 <textarea
@@ -95,15 +96,18 @@ export default class Contact extends Component {
                   name="mensaje"
                   value={mensaje}
                   onChange={this.handleChange}
+                  className="contact-input"
                 ></textarea>
               </label>
             </div>
-            <div className="button-container">
-              <button type="submit">ENVIAR MENSAJE</button>
+            <div className="contact-button-container">
+              <button type="submit" className="contact-button">
+                ENVIAR MENSAJE
+              </button>
             </div>
           </form>
         </div>
-        <div className="clothinfs-info">
+        <div className="contact-info">
           <h3>¿Qué es ClothInfs?</h3>
           <p>
             ClothInfs es el primer Marketplace Online donde puedes encontrar las
