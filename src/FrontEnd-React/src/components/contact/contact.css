@@ -52,7 +52,6 @@ label span {
 input[type="text"],
 textarea,
 button {
-  width: calc(100% - -336px); /* Ajustar el ancho de los input y el botón */
   padding: 10px;
   border: 1px solid #ccc;
   margin: 0 auto;

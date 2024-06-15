@@ -1,3 +1,5 @@
+// src/FrontEnd-React/src/assets/PersonIcon.jsx
+
 import React from "react";
 
 const PersonIcon = () => {
@@ -7,10 +9,10 @@ const PersonIcon = () => {
       width="16"
       height="16"
       fill="currentColor"
-      className="bi bi-person"
+      class="bi bi-person-fill"
       viewBox="0 0 16 16"
     >
-      <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
+      <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
     </svg>
   );
 };

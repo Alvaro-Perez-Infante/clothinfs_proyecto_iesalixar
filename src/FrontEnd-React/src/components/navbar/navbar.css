@@ -1,3 +1,5 @@
+/* src/FrontEnd-React/src/components/navbar/navbar.css */
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -72,31 +74,46 @@
   margin-left: 110px; /* Ajusta el margen izquierdo del logo */
 }
 
-.navbar-logo {
-  margin-right: 20px; /* Ajusta el margen derecho del logo */
-}
-
-.navbar-section:first-child {
-  margin-right: auto; /* Mueve el primer botón hacia la izquierda */
-}
-
 .navbar-logo img {
   height: 50px;
 }
 
 .navbar-profile {
-  margin-left: auto; /* Añadido para empujar los elementos al lado derecho */
+  display: flex;
+  align-items: center;
+  margin-left: auto; /* Mueve el perfil hacia la derecha */
 }
 
-.navbar-profile a {
-  margin-left: 10px;
+.profile-icons {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-profile p {
+  margin-right: 10px; /* Espacio entre el username y los iconos */
+}
+
+.navbar-profile a svg {
+  fill: #000;
+}
+
+.navbar-profile a:first-child {
+  margin-right: 10px; /* Márgen derecho para el primer icono */
+}
+
+.navbar-profile a:last-child {
+  margin-left: 10px; /* Márgen izquierdo para el segundo icono */
+}
+
+.profile-icons a {
   text-decoration: none;
   color: #333;
   font-size: 20px;
   font-weight: bold;
+  margin-left: 10px; /* Espacio entre los iconos */
 }
 
-.navbar-profile a:hover {
+.profile-icons a:hover {
   color: rgb(0, 0, 0);
 }
 
@@ -141,13 +158,53 @@
     color: rgb(0, 0, 0); /* Cambia el color al pasar el ratón por encima */
   }
   
-  
   .navbar-dropdown a:last-child {
     border-bottom: none;
   }
-  
 
   .navbar-dropdown.show {
     display: flex;
   }
+
 }
+
+.logout-button {
+  width: 80px;
+  height: 45px;
+  margin-top: 10px;
+  margin-left: 40px;
+  padding: 8px 16px; /* Ajusta el padding para el tamaño del botón */
+  font-size: 12px; /* Tamaño de fuente */
+  background-color: #000000; /* Color de fondo del botón */
+  border: 1px solid #cccccc; /* Borde del botón */
+  cursor: pointer; /* Cambia el cursor al pasar por encima */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Transiciones suaves */
+}
+
+.logout-button:hover {
+  background-color: #000000; /* Cambio de color de fondo al pasar el ratón */
+}
+
+.logout-button:focus {
+  outline: none; /* Quita el borde de enfoque */
+}
+
+.logout-menu {
+  position: absolute;
+  top: 30px; /* Ajusta la distancia desde la parte superior */
+  right: 0; /* Ajusta la posición a la derecha */
+  z-index: 1000; /* Asegura que esté por encima de otros elementos */
+  padding: 8px; /* Añade espacio interno */
+  min-width: 120px; /* Ancho mínimo del menú */
+}
+
+.username-container {
+  position: relative; /* Para posicionar correctamente el menú */
+  display: inline-block; /* Para que ocupe solo el espacio necesario */
+}
+
+.username-container p {
+  cursor: pointer; /* Cambia el cursor al pasar por encima del nombre de usuario */
+}
+

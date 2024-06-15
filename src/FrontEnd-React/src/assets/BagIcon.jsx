@@ -1,3 +1,5 @@
+// src/FrontEnd-React/src/assets/BagIcon.jsx
+
 import React from "react";
 
 const BagIcon = () => {
@@ -7,10 +9,10 @@ const BagIcon = () => {
       width="16"
       height="16"
       fill="currentColor"
-      className="bi bi-bag"
+      class="bi bi-cart-fill"
       viewBox="0 0 16 16"
     >
-      <path d="M8 1a2 2 0 0 1 2 2v1h2a1 1 0 0 1 1 1v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a1 1 0 0 1 1-1h2V3a2 2 0 0 1 2-2zm3 4H5v9a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V5zm-1 0H6V3a1 1 0 0 1 2 0v2z" />
+      <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
     </svg>
   );
 };
