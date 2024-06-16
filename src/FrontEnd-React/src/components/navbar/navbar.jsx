@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./navbar.css";
-import BagIcon from "../../assets/BagIcon";
 import PersonIcon from "../../assets/PersonIcon";
 import { USERNAME } from "../../constants"; // Ajusta esta ruta según la ubicación real de constants.js
 
@@ -136,7 +135,7 @@ const Navbar = () => {
         )}
       </div>
       <div className="navbar-profile">
-        {username ? (
+       { username ? (
           <React.Fragment>
             <div className="username-container">
               <p onClick={() => setLogoutOpen(!logoutOpen)}>{username}</p>
@@ -154,9 +153,7 @@ const Navbar = () => {
             <PersonIcon />
             </a>
         )}
-        <a href="/shopping_cart">
-          <BagIcon />
-        </a>
+
       </div>
     </div>
   );

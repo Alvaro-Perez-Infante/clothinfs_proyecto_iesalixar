@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route, useLocation,Navigate } from "react-router-dom";
-import { CartProvider } from './context/CartContext';
 import './App.css';
 import Welcome from './components/welcome/welcome';
 
@@ -9,12 +8,10 @@ import Contact from './components/contact/contact';
 import Brand from './components/brand/brand';
 import Navbar from './components/navbar/navbar';
 import CardList from './components/cloth/cardList';
-import Profile from './components/profile/profile';
 import Footer from './components/footer/footer';
 import Blog from './components/blog/blog';
 import Sales from './components/sales/sales';
 import News from './components/news/news';
-import ShoppingCart from './components/shopping_cart/shopping_cart';
 import Cloth_type_filter from './components/cloth/cloth_type_filter/cloth_type_filter';
 import BrandClothes from './components/brand/brandClothes/brandClothes';
 import Cloth_details from './components/cloth/cloth_details/cloth_details';
@@ -40,7 +37,6 @@ function RegisterAndLogout() {
 
 const App = () => {
   return (
-    <CartProvider>
       <BrowserRouter>
         <div className="app-container">
           <Navbar />
@@ -48,7 +44,6 @@ const App = () => {
           <Footer />
         </div>
       </BrowserRouter>
-    </CartProvider>
   );
 };
 
@@ -87,12 +82,10 @@ const MainContent = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path="/brands" element={<Brand />} />
           <Route path="/brands/:marca/" element={<BrandClothes />} />
-          <Route path="/profile" element={<Profile />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:id/" element={<Article_details />} />
           <Route path="/sales" element={<Sales />} />
           <Route path="/news" element={<News />} />
-          <Route path="/shopping_cart" element={<ShoppingCart />} />
           <Route path="/search" element={<Search_bar />} />
           <Route path="*" element={<NotFound/>}></Route>
         </Routes>

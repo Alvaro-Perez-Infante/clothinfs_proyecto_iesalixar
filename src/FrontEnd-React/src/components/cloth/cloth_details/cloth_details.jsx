@@ -1,7 +1,6 @@
-// Cloth_details.js
 import React, { Component } from 'react';
 import './cloth_details.css';
-import { BASE_API_URL } from "../../../constants";
+import { BASE_API_URL } from "../../../constants"; // Asegúrate de que la ruta de importación es correcta
 
 class Cloth_details extends Component {
   constructor(props) {
@@ -10,6 +9,12 @@ class Cloth_details extends Component {
       prenda: null,
       isLoading: true,
       error: null,
+      showModal: false,
+      address: '',
+      country: '',
+      city: '',
+      email: '',
+      contactNumber: '',
     };
   }
 
@@ -36,8 +41,72 @@ class Cloth_details extends Component {
     return url.substring(startIndex, endIndex);
   }
 
+  handleBuyClick = () => {
+    this.setState({ showModal: true });
+  };
+
+  handleCloseModal = () => {
+    this.setState({ showModal: false });
+  };
+
+  handleChange = (e) => {
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
+  };
+
+  handleSubmit = async (e) => {
+    e.preventDefault();
+    const { address, country, city, email, contactNumber, prenda } = this.state;
+
+    const message = `
+      --------Envío--------
+      Dirección: ${address}
+      País: ${country}
+      Ciudad: ${city}
+      Correo Electrónico: ${email}
+      Número de Contacto: ${contactNumber}
+
+      --------Pedido--------
+      Tipo de Prenda: ${prenda.tipo_prenda}
+      Marca: ${prenda.marca.nombre}
+      Precio: ${prenda.precio_rebajado > 0 ? prenda.precio_rebajado : prenda.precio_original}€
+      Descripción: ${prenda.descripcion}
+      Talla: ${prenda.talla}
+      Color: ${prenda.color}
+      Cantidad en Stock: ${prenda.cantidad_stock}
+      Material: ${prenda.material}
+      Género: ${prenda.genero}
+    `;
+
+    try {
+      const response = await fetch(`${BASE_API_URL}/api/contact/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          asunto: "Detalles de la Compra",
+          mensaje: message,
+        }),
+      });
+
+      if (response.ok) {
+        alert("Correo Enviado con Éxito");
+      } else {
+        const data = await response.json();
+        throw new Error(data.message || "Error al enviar el correo");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Error al enviar el correo");
+    }
+
+    // Cerrar el modal después de enviar
+    this.setState({ showModal: false });
+  };
+
   render() {
-    const { prenda, isLoading, error } = this.state;
+    const { prenda, isLoading, error, showModal, address, country, city, email, contactNumber } = this.state;
 
     if (isLoading) {
       return <div>Loading...</div>;
@@ -56,11 +125,8 @@ class Cloth_details extends Component {
         <div className="cloth-details-content">
           <div className="cloth-images">
             <img src={prenda.imagen_url} alt={prenda.descripcion} className="cloth-main-image" />
-            {/* Placeholder for additional images */}
             <div className="cloth-thumbnails">
-              {/* Aquí puedes mapear otras imágenes si las hay */}
               <img src={prenda.imagen_url} alt={prenda.descripcion} className="cloth-thumbnail" />
-              {/* Añade más imágenes de miniaturas aquí */}
             </div>
           </div>
           <div className="cloth-info">
@@ -73,9 +139,41 @@ class Cloth_details extends Component {
             <p><strong>Cantidad en Stock:</strong> {prenda.cantidad_stock}</p>
             <p><strong>Material:</strong> {prenda.material}</p>
             <p><strong>Género:</strong> {prenda.genero}</p>
-            <button className="add-to-cart-button">Añadir al carrito</button>
+            <button className="add-to-cart-button" onClick={this.handleBuyClick}>Comprar</button>
           </div>
         </div>
+
+        {showModal && (
+          <div className="modal">
+            <div className="modal-content">
+              <span className="close-button" onClick={this.handleCloseModal}>&times;</span>
+              <h2>Datos de Envío</h2>
+              <form onSubmit={this.handleSubmit}>
+                <div className="form-group">
+                  <label>País:</label>
+                  <input type="text" name="country" value={country} onChange={this.handleChange} required />
+                </div>
+                <div className="form-group">
+                  <label>Ciudad:</label>
+                  <input type="text" name="city" value={city} onChange={this.handleChange} required />
+                </div>
+                <div className="form-group">
+                  <label>Dirección:</label>
+                  <input type="text" name="address" value={address} onChange={this.handleChange} required />
+                </div>
+                <div className="form-group">
+                  <label>Correo Electrónico:</label>
+                  <input type="email" name="email" value={email} onChange={this.handleChange} required />
+                </div>
+                <div className="form-group">
+                  <label>Número de Contacto:</label>
+                  <input type="text" name="contactNumber" value={contactNumber} onChange={this.handleChange} required />
+                </div>
+                <button type="submit" className="confirm-button">Confirmar Compra</button>
+              </form>
+            </div>
+          </div>
+        )}
       </div>
     );
   }

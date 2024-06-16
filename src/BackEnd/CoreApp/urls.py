@@ -33,12 +33,6 @@ urlpatterns = [
     
     path('api/contact/', EmailAPIView.as_view(), name='contact-us'),
 
-    # Rutas del carrito de la compra
-    path('api/cart/', CartView.as_view(), name='cart-view'),
-    path('api/cart/add/<int:prenda_id>/', AddToCartView.as_view(), name='add-to-cart'),
-    path('api/cart/remove/<int:cart_item_id>/', RemoveFromCartView.as_view(), name='remove-from-cart'),
-    path('api/cart/checkout/', CheckoutView.as_view(), name='checkout'),
-
     # CKEDITOR
     path("ckeditor5/", include("django_ckeditor_5.urls"))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
