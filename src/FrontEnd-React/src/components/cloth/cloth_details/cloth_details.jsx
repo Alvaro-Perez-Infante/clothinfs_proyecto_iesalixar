@@ -169,6 +169,11 @@ class Cloth_details extends Component {
                   <label>Número de Contacto:</label>
                   <input type="text" name="contactNumber" value={contactNumber} onChange={this.handleChange} required />
                 </div>
+                <div className='note'>
+                  <p>El producto se enviará una vez se confirme la transferencia a la cuenta: 
+                      <p>ES6000491500051234567892</p>
+                  </p>
+                </div>
                 <button type="submit" className="confirm-button">Confirmar Compra</button>
               </form>
             </div>

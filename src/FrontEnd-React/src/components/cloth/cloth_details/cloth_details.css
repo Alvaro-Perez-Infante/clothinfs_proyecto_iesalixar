@@ -143,3 +143,11 @@
 .confirm-button:hover {
   background-color: #3f3f3f;
 }
+.note{
+  background-color: #686868;
+  color: white;
+  border-radius: 5px;
+  padding: 5px; 
+
+  margin-bottom: 3%;
+}
