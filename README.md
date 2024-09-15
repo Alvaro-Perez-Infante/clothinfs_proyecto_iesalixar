@@ -4,7 +4,7 @@
 #### Autor: [Álvaro Pérez Infante](https://github.com/Alvaro-Perez-Infante)
 #### Tutor: [Antonio Gabriel González Casado](https://github.com/antonio-gabriel-gonzalez-casado)
 #### Fecha de Inicio: 15-03-2024
-#### Fecha de Finalización: XX-06-2024
+#### Fecha de Finalización: 15-06-2024
 
 ## Breve descripción del proyecto
 
